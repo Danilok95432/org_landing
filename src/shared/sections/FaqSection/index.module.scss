@@ -2,7 +2,9 @@
 	padding: 25px 0 50px 0;
 
 	h2 {
-		margin-bottom: 17px;
+		font-size: 24px;
+		font-weight: 500;
+		margin-bottom: 24px;
 
 		@media (max-width: 768px) {
 			line-height: 1.2;
@@ -18,23 +20,21 @@
 
 	.faqItem {
 		box-shadow: none;
+		transition: all 0.3s;
+
+		&:hover {
+			scale: 1.05;
+		}
 
 		button {
 			font-size: 20px;
 			font-weight: 400;
-			padding: 18px 45px 18px 26px;
+			padding: 24px 45px 24px 24px;
+			display: flex;
+			align-items: center;
 			color: #000000;
-			background: #F2F1F7;
+			background: #f2f2f2;
 			transition: all 0.3s;
-
-			&:hover {
-				color: var(--color-white);
-				background: var(--main-theme-color);
-
-				svg path {
-					fill: var(--color-white);
-				}
-			}
 
 			@media (max-width: 768px) {
 				padding-left: 20px;
@@ -43,26 +43,22 @@
 			& > svg {
 				width: 21px;
 				height: 14px;
-				top: 23px;
+				top: 29px;
 			}
 		}
 
 		:global {
 			.accordion-content {
-				background: #F2F1F7;
+				background: #f2f2f2;
 				font-size: 18px;
 				line-height: 1.2;
 				padding: 15px 20px 20px 25px;
 			}
 
 			._triggerOpen {
-				color: var(--color-white);
-				background: var(--main-theme-color);
-
-				svg path {
-					fill: var(--color-white);
-				}
+				background: #f2f2f2;
 			}
 		}
 	}
 }
+

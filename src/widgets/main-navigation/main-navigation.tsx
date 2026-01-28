@@ -2,15 +2,15 @@ import { Container } from 'src/shared/ui/Container/Container'
 import { navigationElements } from './consts'
 import styles from './index.module.scss'
 import { BurgerMenu } from './components/burger-menu/burger-menu'
-import { useActions } from 'src/app/store/hooks/actions'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { LogoSVG } from 'src/shared/ui/icons/logoSVG'
-import { BuyTicketModal } from 'src/modals/buy-ticket-modal/buy-ticket-modal'
 import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
+import { PersonIconSvg } from 'src/shared/ui/icons/personIconSVG'
+
+import cn from 'classnames'
 
 export const MainNavigation = () => {
-	const { openModal } = useActions()
 	const location = useLocation()
 	const navigate = useNavigate()
 
@@ -131,6 +131,10 @@ export const MainNavigation = () => {
 			navigate('/', { state: { scrollTo: sectionId } })
 			return
 		}
+		if (sectionId.includes('/')) {
+			navigate(sectionId)
+			return
+		}
 		window.history.replaceState(null, '', `/#${sectionId}`)
 		startSmoothScrollToId(sectionId)
 	}
@@ -167,30 +171,19 @@ export const MainNavigation = () => {
 					</div>
 					<FlexRow className={styles.mobileRow}>
 						<BurgerMenu />
-						<button
-							className={styles.buyBtnMobile}
-							onClick={() => openModal(<BuyTicketModal id='1' />)}
-						>
-							<div className={styles.text}>
-								<p>Купить билет</p>
-								<p>от 8 000 ₽</p>
-							</div>
-						</button>
 					</FlexRow>
 
 					<ul className={styles.navWrapper}>
 						{navigationElements.map((el, index) => (
 							<button key={index} className={styles.navEl} onClick={() => scrollToSection(el.link)}>
-								<li>{el.title}</li>
+								<li className={cn({ [styles.active]: location.pathname.includes(el.link) })}>
+									{el.title}
+								</li>
 							</button>
 						))}
 					</ul>
-
-					<button className={styles.buyBtn} onClick={() => openModal(<BuyTicketModal id='1' />)}>
-						<div className={styles.text}>
-							<p>Купить билет</p>
-							<p>от 8 000 ₽</p>
-						</div>
+					<button className={styles.personMenu} aria-label='Профиль' title='Профиль'>
+						<PersonIconSvg />
 					</button>
 				</Container>
 			</nav>

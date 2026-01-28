@@ -1,42 +1,59 @@
-import { Link } from 'react-router-dom'
 import { Container } from '../Container/Container'
 import { FlexRow } from '../FlexRow/FlexRow'
 import styles from './index.module.scss'
-import { BuyTicketModal } from 'src/modals/buy-ticket-modal/buy-ticket-modal'
-import { useActions } from 'src/app/store/hooks/actions'
+import { VkSocialSvg } from '../icons/vkSocialSVG'
+import { TelegramSocialSvg } from '../icons/telegramSocialSVG'
+import { RutubeSocialSvg } from '../icons/rutubeSocialSVG'
 
 export const Footer = () => {
-	const { openModal } = useActions()
 	return (
 		<footer className={styles.footer}>
 			<Container>
 				<FlexRow className={styles.footerCont}>
-					<button className={styles.buyBtn} onClick={() => openModal(<BuyTicketModal id='1' />)}>
-						<div className={styles.text}>
-							<p>Купить билет</p>
-							<p>от 8 000 ₽</p>
-						</div>
-					</button>
-					<FlexRow className={styles.footerRow}>
-						<p>
-							© <strong>2025 ООО «НПО«ТАУ»</strong>
-						</p>
-						<FlexRow className={styles.linksRow}>
-							<Link to={''}>
-								<p>Политика конфиденциальности</p>
-							</Link>
-							<Link to={''}>
-								<p>Согласие на обработку персональных данных</p>
-							</Link>
-							<Link to={''}>
-								<p>Пользовательское соглашение</p>
-							</Link>
+					<FlexRow className={styles.topRow}>
+						<p>{'РОО «ТОЛК»'}</p>
+					</FlexRow>
+					<FlexRow className={styles.bottomRow}>
+						<FlexRow className={styles.contactsRow}>
+							<FlexRow className={styles.infoRow}>
+								<FlexRow className={styles.infoEl}>
+									<p className={styles.title}>Телефон</p>
+									<p>{'8 (999) 999-99-99'}</p>
+								</FlexRow>
+								<FlexRow className={styles.infoEl}>
+									<p className={styles.title}>Электронная почта</p>
+									<p>{'npotau@npotau.ru'}</p>
+								</FlexRow>
+								<FlexRow className={styles.infoEl}>
+									<p className={styles.title}>Адрес</p>
+									<p>{'392003, г. Тамбов, б-р Энтузиастов, д. 2А, этаж 4'}</p>
+								</FlexRow>
+							</FlexRow>
+							<FlexRow className={styles.socialsRow}>
+								<FlexRow className={styles.socialEl}>
+									<VkSocialSvg />
+								</FlexRow>
+								<FlexRow className={styles.socialEl}>
+									<TelegramSocialSvg />
+								</FlexRow>
+								<FlexRow className={styles.socialEl}>
+									<RutubeSocialSvg />
+								</FlexRow>
+							</FlexRow>
 						</FlexRow>
-						<div className={styles.ageBlock}>
-							<p>
-								18<span className={styles.plus}>+</span>
-							</p>
-						</div>
+						<FlexRow className={styles.bottomInfo}>
+							<FlexRow className={styles.author}>
+								<p className={styles.title}>© Федерация этноспорта России, 2026</p>
+								<p>
+									Cвидетельство о регистрации средства массовой информации Эл № ФС77 - 37229 от 14
+									августа 2009 г. Выдано Федеральной службой по надзору в сфере связи,
+									информационных технологий и массовых коммуникаций (Роскомнадзор).
+								</p>
+							</FlexRow>
+							<FlexRow className={styles.developer}>
+								<p>Разработано и построено в НПО ТАУ. Платформа Т-6.</p>
+							</FlexRow>
+						</FlexRow>
 					</FlexRow>
 				</FlexRow>
 			</Container>

@@ -6,11 +6,23 @@
 		gap: 17px;
 	}
 	.btnRow {
-		justify-content: end;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 20px;
+		.sectionTitle {
+			font-size: 24px;
+			font-weight: 500;
+		}
 	}
 	.allBtn {
+		font-size: 18px;
+		padding: 12px 24px;
+		border-radius: 12px;
 		background: var(--main-theme-color);
-		margin-bottom: 20px;
+		height: max-content;
+		&:hover {
+			box-shadow: var(--box-shadow);
+		}
 	}
 
 	@media (max-width: 768) {

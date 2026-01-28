@@ -1,0 +1,15 @@
+.eventStatus {
+  display: flex;
+  align-items: start;
+  gap: 4px;
+
+  svg {
+    width: 17px;
+    height: 16px;
+    margin-top: 2px;
+  }
+  p {
+    font-size: 16px;
+    padding: 0 0 0 10px;
+  }
+}
