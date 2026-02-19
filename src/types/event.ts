@@ -150,6 +150,7 @@ export type CardEventItem = {
 		title: string
 		address: string
 	}
+	siteurl: string
 	description: string
 	brand: {
 		id: string

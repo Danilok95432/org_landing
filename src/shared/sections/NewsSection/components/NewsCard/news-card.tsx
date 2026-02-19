@@ -10,6 +10,7 @@ type NewsCardProps = {
 	className?: string
 	mainStatus?: boolean
 	titleLink?: boolean
+	noShadow?: boolean
 } & CardNewsItem
 
 export const NewsCard: FC<NewsCardProps> = ({
@@ -21,11 +22,12 @@ export const NewsCard: FC<NewsCardProps> = ({
 	mainStatus,
 	className,
 	titleLink = false,
+	noShadow = false,
 }) => {
 	if (mainStatus) {
 		return (
 			<Link
-				className={cn(styles.newsItem, className)}
+				className={cn(styles.newsItem, className, { [styles.noShadow]: noShadow })}
 				to={`/content/news/${id}`}
 				aria-label={title}
 				title={title}
@@ -45,13 +47,17 @@ export const NewsCard: FC<NewsCardProps> = ({
 	}
 	return (
 		<Link
-			className={cn(styles.newsItem, { [styles.contentItem]: titleLink })}
+			className={cn(
+				styles.newsItem,
+				{ [styles.contentItem]: titleLink },
+				{ [styles.noShadow]: noShadow },
+			)}
 			to={`/content/news/${id}`}
 			aria-label={title}
 			title={title}
 		>
 			<figure>
-				<div className={styles.newsImgWrapper}>
+				<div className={cn(styles.newsImgWrapper, { [styles.radius]: noShadow })}>
 					<img src={mainphoto[0]?.original} alt={title} width={286} height={160} loading='lazy' />
 				</div>
 				<figcaption className={styles.newsItemContent}>

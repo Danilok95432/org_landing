@@ -54,9 +54,15 @@
 			justify-content: space-between;
 			align-items: center;
 			margin-bottom: 20px;
+			@media (max-width: 768px) {
+			padding-right: 24px;
+		}
 			.sectionTitle {
 				font-size: 32px;
 				font-weight: 500;
+				@media (max-width: 768px) {
+					font-size: 20px;
+				}
 			}
 			.allBtn {
 				font-size: 18px;
@@ -66,6 +72,12 @@
 				height: max-content;
 				&:hover {
 					box-shadow: var(--box-shadow);
+				}
+				@media (max-width: 768px) {
+					color: var(--main-link-color);
+					background: none;
+					font-size: 16px;
+					padding: 0;
 				}
 			}
 		}

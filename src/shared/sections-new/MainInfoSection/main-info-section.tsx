@@ -5,16 +5,21 @@ import { Container } from 'src/shared/ui/Container/Container'
 import cn from 'classnames'
 import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
 import { MainInfoPlaceSVG } from 'src/shared/ui/icons/mainInfoPlaceSVG'
-import { useState } from 'react'
+import { type FC, useState } from 'react'
 import { useGetEventByIdQuery } from 'src/features/home/api/home.api'
 
-export const MainInfoSection = () => {
-	const { data: eventData } = useGetEventByIdQuery('1')
+type MainInfoProps = {
+	id: string
+	offContMobile?: boolean
+}
+
+export const MainInfoSection: FC<MainInfoProps> = ({ id, offContMobile }) => {
+	const { data: eventData } = useGetEventByIdQuery(id, { skip: !id })
 	const [activeCont, setActiveCont] = useState<boolean>(false)
 
 	return (
 		<Section className={cn(styles.mainInfo)}>
-			<Container>
+			<Container className={cn(styles.cont, {[styles.offContMobile]: offContMobile})}>
 				<FlexRow className={styles.mainRow}>
 					<div className={styles.imgWrapper}>
 						<img src={orgImg} alt='main' className={styles.imgMain} />

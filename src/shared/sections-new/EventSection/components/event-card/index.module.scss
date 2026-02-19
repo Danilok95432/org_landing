@@ -59,9 +59,9 @@
 .eventContent {
 	padding: 16px;
 	.eventTitle {
-		font-weight: 500;
+		font-weight: 600;
 		font-size: 18px;
-		margin-bottom: 16px;
+		margin-bottom: 8px;
 		line-height: 1.25;
 		display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -72,10 +72,11 @@
 		overflow: hidden;
 		max-height: 48px;
 		height: 48px;
+	}
 
-		.status {
+	.status {
 			display: flex;
-			gap: 11px;
+			gap: 0px;
 			margin-bottom: 6px;
 
 			svg {
@@ -83,7 +84,6 @@
 				height: 16px;
 			}
 		}
-	}
 
 	.eventDate,
 	.eventTime,
@@ -128,7 +128,7 @@
 	}
 
 	.eventLocations {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 		span:first-child {
 			max-width: max-content;
 			display: block;

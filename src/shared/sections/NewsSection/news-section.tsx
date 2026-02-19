@@ -4,7 +4,7 @@ import styles from './index.module.scss'
 import cn from 'classnames'
 import { Section } from 'src/shared/ui/Section/section'
 import { Swiper, SwiperSlide, type SwiperRef } from 'swiper/react'
-import { type RefObject, useRef, useEffect, useState, useMemo } from 'react'
+import { type RefObject, useRef, useEffect, useState, useMemo, type FC } from 'react'
 import { SliderBtns } from 'src/widgets/slider-btns/slider-btns'
 import { newsSliderOptions } from './consts'
 import { NewsCard } from './components/NewsCard/news-card'
@@ -14,8 +14,14 @@ import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
 import { type CardNewsItem } from 'src/types/news'
 import { useBreakPoint } from 'src/features/useBreakPoint/useBreakPoint'
 
-export const NewsSection = () => {
-	const { data: newsList } = useGetEventNewsByIdQuery('1')
+import type { Swiper as SwiperType } from 'swiper'
+
+type NewsProps = {
+	id: string
+}
+
+export const NewsSection: FC<NewsProps> = ({ id }) => {
+	const { data: newsList } = useGetEventNewsByIdQuery(id, { skip: !id })
 	const [isMobile, setIsMobile] = useState(false)
 	const navigate = useNavigate()
 	const breakpoint = useBreakPoint()
@@ -80,6 +86,24 @@ export const NewsSection = () => {
 		return () => window.removeEventListener('resize', handleResize)
 	}, [])
 
+	const [activeIndex, setActiveIndex] = useState(0)
+
+	const handleSlideChange = (swiper: SwiperType) => {
+		setActiveIndex(swiper.activeIndex)
+	}
+
+	const getButtonColors = () => {
+		const isFirstSlide = activeIndex === 0
+		const isLastSlide = newsList ? activeIndex === newsList.length - 2 : false
+
+		return {
+			prevBtnColor: isFirstSlide ? '#00000040' : '#000',
+			nextBtnColor: isLastSlide ? '#00000040' : '#000',
+		}
+	}
+
+	const { prevBtnColor, nextBtnColor } = getButtonColors()
+
 	return (
 		<Section id='news' className={cn(styles.news)}>
 			<Container off={isMobile} className={styles.newsCont}>
@@ -113,7 +137,13 @@ export const NewsSection = () => {
 				)}
 				{sliderNews && sliderNews?.length > 0 && (
 					<>
-						<Swiper {...newsSliderOptions} ref={swiperRef} className={styles.newsSlider}>
+						<Swiper
+							{...newsSliderOptions}
+							ref={swiperRef}
+							className={styles.newsSlider}
+							onSlideChange={handleSlideChange}
+							onInit={(swiper) => setActiveIndex(swiper.activeIndex)}
+						>
 							{sliderNews.map((newsEl, idx) => (
 								<SwiperSlide className={styles.newsSlide} key={idx}>
 									<NewsCard key={newsEl.id} {...newsEl} />
@@ -124,8 +154,8 @@ export const NewsSection = () => {
 							className={styles.newsSliderBtns}
 							swiperRef={swiperRef}
 							color={'#fff'}
-							nextBtnColor='#000'
-							prevBtnColor='#000'
+							nextBtnColor={nextBtnColor}
+							prevBtnColor={prevBtnColor}
 						/>
 					</>
 				)}

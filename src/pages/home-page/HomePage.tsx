@@ -8,12 +8,12 @@ import { PartnersSection } from 'src/shared/sections/PartnersSection/partners-se
 export const HomePage = () => {
 	return (
 		<>
-			<MainInfoSection />
+			<MainInfoSection id={'1'} />
 			<EventsSection />
-			<NewsSection />
-			<VideosSection />
-			<PartnersSection />
-			<FaqSection />
+			<NewsSection id={'1'} />
+			<VideosSection id={'1'} />
+			<PartnersSection id={'1'} />
+			<FaqSection id={'1'} />
 		</>
 	)
 }

@@ -24,7 +24,11 @@
   position: relative;
   width: 100%;
   line-height: 1.2;
-
+  p {
+    @media (max-width: 768px) {
+      max-width: 80%;
+    }
+  }
 
   & > svg {
     position: absolute;

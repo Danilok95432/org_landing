@@ -5,15 +5,21 @@ import { Section } from 'src/shared/ui/Section/section'
 import { Swiper, type SwiperRef, SwiperSlide } from 'swiper/react'
 import { SliderBtns } from 'src/widgets/slider-btns/slider-btns'
 import { useGetEventVideosByIdQuery } from 'src/features/home/api/home.api'
-import { type RefObject, useEffect, useRef, useState } from 'react'
+import { type FC, type RefObject, useEffect, useRef, useState } from 'react'
 import { VideoCard } from './components/video-card/video-card'
 import { homeVideosSliderOptions } from './consts'
 import { MainButton } from 'src/shared/ui/MainButton/MainButton'
 import { useNavigate } from 'react-router-dom'
 import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
 
-export const VideosSection = () => {
-	const { data: videos } = useGetEventVideosByIdQuery('1')
+import type { Swiper as SwiperType } from 'swiper'
+
+type VideoProps = {
+	id: string
+}
+
+export const VideosSection: FC<VideoProps> = ({ id }) => {
+	const { data: videos } = useGetEventVideosByIdQuery(id, { skip: !id })
 	const [isMobile, setIsMobile] = useState(false)
 	const swiperRef: RefObject<SwiperRef> = useRef<SwiperRef>(null)
 	const navigate = useNavigate()
@@ -26,6 +32,25 @@ export const VideosSection = () => {
 		window.addEventListener('resize', handleResize)
 		return () => window.removeEventListener('resize', handleResize)
 	}, [])
+
+	const [activeIndex, setActiveIndex] = useState(0)
+
+	const handleSlideChange = (swiper: SwiperType) => {
+		setActiveIndex(swiper.activeIndex)
+	}
+
+	const getButtonColors = () => {
+		const isFirstSlide = activeIndex === 0
+		const isLastSlide = videos ? activeIndex === videos.length - 2 : false
+
+		return {
+			prevBtnColor: isFirstSlide ? '#00000040' : '#000',
+			nextBtnColor: isLastSlide ? '#00000040' : '#000',
+		}
+	}
+
+	const { prevBtnColor, nextBtnColor } = getButtonColors()
+
 	return (
 		<Section id='video' className={cn(styles.videos)}>
 			<Container off={isMobile}>
@@ -36,7 +61,12 @@ export const VideosSection = () => {
 					</MainButton>
 				</FlexRow>
 				<div>
-					<Swiper {...homeVideosSliderOptions} ref={swiperRef}>
+					<Swiper
+						{...homeVideosSliderOptions}
+						ref={swiperRef}
+						onSlideChange={handleSlideChange}
+						onInit={(swiper) => setActiveIndex(swiper.activeIndex)}
+					>
 						{videos?.map((slideItem, idx) => (
 							<SwiperSlide key={idx}>
 								<VideoCard key={slideItem.id} {...slideItem} />
@@ -47,8 +77,8 @@ export const VideosSection = () => {
 						className={styles.videoSliderBtns}
 						swiperRef={swiperRef}
 						color={'#fff'}
-						nextBtnColor='#000'
-						prevBtnColor='#000'
+						nextBtnColor={nextBtnColor}
+						prevBtnColor={prevBtnColor}
 					/>
 				</div>
 			</Container>

@@ -18,14 +18,35 @@ export const EventCard: FC<EventItemProps> = ({
 	brand: { title: brandTitle },
 	location: { title: locTitle, address },
 	title,
+	siteurl,
 	date,
 	status,
 	mainphoto,
 	description,
 	className,
 }) => {
+	const formatUrl = (url: string) => {
+		if (!url) return '/'
+		url = url.trim()
+		if (url.startsWith('http://') || url.startsWith('https://')) {
+			return url
+		}
+		if (url.startsWith('www.')) {
+			return `https://${url}`
+		}
+		if (url.includes('.') && !url.includes(' ')) {
+			return `https://${url}`
+		}
+		return url
+	}
 	return (
-		<Link to={`/`} aria-label='Переход на страницу события' title={title}>
+		<a
+			href={formatUrl(siteurl)}
+			aria-label='Переход на страницу события'
+			title={title}
+			target='_blank'
+			rel='noopener noreferrer'
+		>
 			<figure className={cn(styles.eventItem, className)}>
 				<div className='event-item-img'>
 					<img src={mainphoto[0]?.original} alt={title} width={415} height={256} loading='lazy' />
@@ -47,9 +68,11 @@ export const EventCard: FC<EventItemProps> = ({
 							{address}
 						</span>
 					</p>
-					{description && <p className={styles.eventDesc}>{description}</p>}
+					{description && (
+						<div className={styles.eventDesc} dangerouslySetInnerHTML={{ __html: description }} />
+					)}
 				</figcaption>
 			</figure>
-		</Link>
+		</a>
 	)
 }

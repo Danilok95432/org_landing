@@ -1,0 +1,163 @@
+section.gallerySection {
+	position: relative;
+	padding: 0px 0 72px;
+	@media (max-width: 768px) {
+		padding: 0 0 32px;
+	}
+	div.galleryCont {
+		@media (max-width: 768px) {
+			padding: 0;
+		}
+		div.sliderBtns {
+			bottom: -30px;
+			top: unset;
+			width: 88px;
+			left: unset;
+			right: -45px;
+			@media (max-width: 768px) {
+				display: none;
+			}
+		}
+	}
+	.sliderMain {
+		.slideRow {
+			justify-content: space-between;
+			flex-wrap: nowrap;
+			align-items: unset;
+			gap: 0;
+			border-radius: 24px;
+			flex-direction: column;
+			@media (max-width: 768px) {
+				flex-direction: column;
+			}
+			.title {
+				font-size: 16px;
+				margin-bottom: 5px;
+			}
+			.author {
+				font-size: 14px;
+				color: #949494;
+			}
+			.imgWrapper {
+				width: 220px;
+				height: 150px;
+				background: none;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 16px;
+				margin-bottom: 8px;
+				@media (max-width: 768px) {
+					width: 292px;
+					height: 160px;
+				}
+				.sliderImg {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					border-radius: 16px;
+				}
+				.skeletonImg {
+					width: 190px;
+					height: 50px;
+					object-fit: contain;
+				}
+			}
+		}
+	}
+}
+
+.gallerySection {
+	position: relative;
+}
+
+.galleryCont {
+	position: relative;
+}
+
+/* ---------- FULLSCREEN ---------- */
+
+.fullscreenOverlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.75);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 999; // выше всего
+}
+
+.fullscreenInner {
+	max-width: 90vw;
+	max-height: 90vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	.paginationContainer {
+		margin: 24px auto 7px auto;
+		width: max-content;
+	}
+	.paginationContainer {
+		margin: 24px auto 7px auto;
+		width: max-content;
+	}
+	:global(.swiper-pagination-bullet) {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		opacity: 0.4;
+		background: #fff;
+	}
+
+	:global(.swiper-pagination-bullet-active) {
+		opacity: 1;
+		background: #fff;
+	}
+}
+
+.fullscreenSwiper {
+	width: 100%;
+	height: 100%;
+}
+
+.fullscreenImgWrapper {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.fullscreenImg {
+	max-width: 100%;
+	max-height: 80vh;
+	object-fit: contain;
+	border-radius: 24px;
+}
+
+/* стрелки в полноэкранном режиме */
+
+.fullscreenBtns {
+	top: 52%;
+	width: 80%;
+	@media (max-width: 768px) {
+		display: none;
+	}
+	> * {
+		pointer-events: all;
+	}
+}
+
+/* кнопка закрытия */
+
+.fullscreenClose {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	border: none;
+	cursor: pointer;
+}

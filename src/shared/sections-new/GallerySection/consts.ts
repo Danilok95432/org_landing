@@ -1,0 +1,42 @@
+import { DisplayBreakpoints } from 'src/shared/helpers/consts'
+import { Pagination } from 'swiper'
+import { type SwiperProps } from 'swiper/react'
+
+export const eventsSliderOptions: SwiperProps = {
+	slidesPerView: 1.2,
+	slidesPerGroup: 1,
+	spaceBetween: 24,
+	autoHeight: false,
+	loop: false,
+	breakpoints: {
+		[DisplayBreakpoints.Sm]: {
+			slidesPerView: 1,
+		},
+		[DisplayBreakpoints.Md]: {
+			slidesPerView: 2,
+		},
+		[DisplayBreakpoints.Lg]: {
+			slidesPerView: 3,
+		},
+		[DisplayBreakpoints.Xl]: {
+			slidesPerView: 4,
+		},
+		[DisplayBreakpoints.Xxl]: {
+			slidesPerView: 5,
+		},
+	},
+}
+
+export const eventsSliderFullScreenOptions: SwiperProps = {
+	slidesPerView: 1,
+	slidesPerGroup: 1,
+	spaceBetween: 24,
+	autoHeight: false,
+	loop: false,
+	pagination: {
+		clickable: true,
+		dynamicBullets: false,
+		type: 'bullets',
+	},
+	modules: [Pagination],
+}

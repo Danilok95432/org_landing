@@ -37,7 +37,8 @@
 			transition: all 0.3s;
 
 			@media (max-width: 768px) {
-				padding-left: 20px;
+				padding: 16px 0 16px 20px;
+				font-size: 18px;
 			}
 
 			& > svg {
@@ -53,6 +54,10 @@
 				font-size: 18px;
 				line-height: 1.2;
 				padding: 15px 20px 20px 25px;
+				@media (max-width: 768px) {
+					font-size: 16px;
+					padding: 16px;
+				}
 			}
 
 			._triggerOpen {

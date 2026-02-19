@@ -1,47 +1,54 @@
 .eventsSection {
 	padding: 37px 0 40px;
 
-  .slider {
-    padding: 10px 0;
-  }
+	.slider {
+		padding: 10px 0;
+	}
 
 	.eventsSectionRow {
 		margin: 17px 0;
 		align-items: center;
 		justify-content: space-between;
 		gap: 17px;
+		@media (max-width: 768px) {
+			padding-right: 24px;
+		}
 	}
 
-  .sectionTitle {
-    font-size: 32px;
-    font-weight: 500;
-  }
+	.sectionTitle {
+		font-size: 32px;
+		font-weight: 500;
+		@media (max-width: 768px) {
+			font-size: 20px;
+		}
+	}
 
-  .allBtn {
-    font-size: 18px;
-    padding: 12px 24px;
-    border-radius: 12px;
-    background: var(--main-theme-color);
-    height: max-content;
-    &:hover {
-      box-shadow: var(--box-shadow);
-    }
-  }
+	.allBtn {
+		font-size: 18px;
+		padding: 12px 24px;
+		border-radius: 12px;
+		background: var(--main-theme-color);
+		height: max-content;
+		&:hover {
+			box-shadow: var(--box-shadow);
+		}
+		@media (max-width: 768px) {
+			color: var(--main-link-color);
+			background: none;
+			font-size: 16px;
+			padding: 0;
+		}
+	}
 
 	@include mobile {
-		padding: 50px 0 55px;
+		padding: 0px 0 0px;
 	}
 
 	.eventsSliderBtns {
-    width: calc(100% + 80px);
-    top: 55%;
+		width: calc(100% + 80px);
+		top: 55%;
 		@media (max-width: 768px) {
-			width: 70%;
-			top: 45%;
-		}
-		@media (max-width: 440px) {
-			width: 270px;
-			top: 30%;
+			display: none;
 		}
 	}
 }

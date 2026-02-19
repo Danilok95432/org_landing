@@ -94,7 +94,10 @@ export const BurgerMenu = () => {
 	const scrollToSection = (sectionId: string) => {
 		cancelPending()
 		activeTargetRef.current = sectionId
-
+		if (sectionId.includes('/')) {
+			navigate(sectionId)
+			return
+		}
 		if (location.pathname !== '/') {
 			navigate('/', { state: { scrollTo: sectionId } })
 			return

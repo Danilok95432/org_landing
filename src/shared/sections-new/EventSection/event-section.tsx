@@ -1,4 +1,4 @@
-import { type FC, type RefObject, useRef } from 'react'
+import { type FC, type RefObject, useEffect, useRef, useState } from 'react'
 
 import cn from 'classnames'
 
@@ -16,13 +16,23 @@ import { Section } from 'src/shared/ui/Section/section'
 export const EventsSection: FC = () => {
 	const { data: homeEvents } = useGetEventsMonthsQuery({ date: '', category: '' })
 	const swiperRef: RefObject<SwiperRef> = useRef<SwiperRef>(null)
+	const [isMobile, setIsMobile] = useState(false)
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsMobile(window.innerWidth <= 768)
+		}
+		handleResize()
+		window.addEventListener('resize', handleResize)
+		return () => window.removeEventListener('resize', handleResize)
+	}, [])
 
 	return (
 		<Section className={cn(styles.eventsSection)}>
-			<Container>
+			<Container off={isMobile}>
 				<FlexRow className={styles.eventsSectionRow}>
 					<h2 className={styles.sectionTitle}>События</h2>
-					<MainButton as='route' to={'/'} className={styles.allBtn}>
+					<MainButton as='route' to={'/events-list'} className={styles.allBtn}>
 						Все события
 					</MainButton>
 				</FlexRow>

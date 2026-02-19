@@ -30,7 +30,7 @@ export const AccordionItem: FC<AccordionItemProps> = ({
 				onClick={toggleAccordion}
 				type='button'
 			>
-				{trigger}
+				<p>{trigger}</p>
 				{customArrow ?? <AccordionArrow />}
 			</button>
 			<div

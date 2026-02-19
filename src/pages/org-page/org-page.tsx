@@ -3,16 +3,25 @@ import { Container } from 'src/shared/ui/Container/Container'
 import { Section } from 'src/shared/ui/Section/section'
 
 import styles from './index.module.scss'
+import { GallerySection } from 'src/shared/sections-new/GallerySection/gallery-section'
+import { Link } from 'react-router-dom'
 
 export const OrgPage = () => {
 	return (
 		<Section className={styles.orgPage}>
-			<Container>
-				<MainInfoSection />
-				<p className={styles.text}>
-					<div
-						dangerouslySetInnerHTML={{
-							__html: `В частной переписи поселения Тамбовского уезда 1714 года указано, что в селе Отманов Угол
+			<Container className={styles.cont}>
+				<Container className={styles.innerCont}>
+					<Link to={'/'} className={styles.linkBack}>
+						Назад на главную
+					</Link>
+					<MainInfoSection id={'1'} offContMobile />
+				</Container>
+				<GallerySection />
+				<Container className={styles.innerCont}>
+					<p className={styles.text}>
+						<div
+							dangerouslySetInnerHTML={{
+								__html: `В частной переписи поселения Тамбовского уезда 1714 года указано, что в селе Отманов Угол
 					зарегистрировано 38 крестьянских дворов, в них мужчин - 180, женщин - 194. Все они были
 					дворцовыми крестьянами. В 1733 году тщанием прихожан была построена деревянная Успенская
 					церковь. В конце XVIII века часть атмановских крестьян стали крепостными помещика Фёдора
@@ -38,9 +47,10 @@ export const OrgPage = () => {
 					1313, женщин –1473). По спискам сельскохозяйственного налога на 1928-29 гг. в Атмановом
 					Углу было 492 хозяйства, жителей - 2992 человека. Во время Великой Отечественной войны на
 					фронтах погибло и пропало без вести 300 атмановцев.`,
-						}}
-					/>
-				</p>
+							}}
+						/>
+					</p>
+				</Container>
 			</Container>
 		</Section>
 	)

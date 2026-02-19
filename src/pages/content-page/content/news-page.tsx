@@ -103,7 +103,7 @@ export const NewsPage = () => {
 		if ('duration' in item) {
 			return <VideoCard key={item.id} shouldDate {...item} />
 		}
-		return <NewsCard key={item.id} titleLink {...item} />
+		return <NewsCard key={item.id} titleLink {...item} noShadow />
 	}
 
 	return (
@@ -117,7 +117,7 @@ export const NewsPage = () => {
 						Назад на главную
 					</Link>
 					<FlexRow className={styles.titleRow}>
-						<h2 className={styles.title}>Новости</h2>
+						<h2 className={styles.title}>{isChecked ? 'Видеолента' : 'Новости'}</h2>
 						<CommonCheckbox
 							checked={isChecked}
 							onChange={handleCheckboxChange}
