@@ -19,7 +19,7 @@ export const MainInfoSection: FC<MainInfoProps> = ({ id, offContMobile }) => {
 
 	return (
 		<Section className={cn(styles.mainInfo)}>
-			<Container className={cn(styles.cont, {[styles.offContMobile]: offContMobile})}>
+			<Container className={cn(styles.cont, { [styles.offContMobile]: offContMobile })}>
 				<FlexRow className={styles.mainRow}>
 					<div className={styles.imgWrapper}>
 						<img src={orgImg} alt='main' className={styles.imgMain} />

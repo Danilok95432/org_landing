@@ -1,7 +1,6 @@
 import { type FC } from 'react'
 
 import cn from 'classnames'
-import { Link } from 'react-router-dom'
 
 import styles from './index.module.scss'
 import { EventStatus } from '../event-status/event-status'
