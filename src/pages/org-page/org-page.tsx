@@ -5,8 +5,13 @@ import { Section } from 'src/shared/ui/Section/section'
 import styles from './index.module.scss'
 import { GallerySection } from 'src/shared/sections-new/GallerySection/gallery-section'
 import { Link } from 'react-router-dom'
+import { useGetContactsQuery } from 'src/features/home/api/home.api'
+import { useGetPageHeaderQuery } from 'src/features/pages-header/api/pages-header.api'
+import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
 
 export const OrgPage = () => {
+	const { data: eventData } = useGetPageHeaderQuery('org')
+	const { data } = useGetContactsQuery('')
 	return (
 		<Section className={styles.orgPage}>
 			<Container className={styles.cont}>
@@ -16,40 +21,82 @@ export const OrgPage = () => {
 					</Link>
 					<MainInfoSection id={'1'} offContMobile />
 				</Container>
-				<GallerySection />
+				<GallerySection orgPage />
 				<Container className={styles.innerCont}>
 					<p className={styles.text}>
-						<div
-							dangerouslySetInnerHTML={{
-								__html: `В частной переписи поселения Тамбовского уезда 1714 года указано, что в селе Отманов Угол
-					зарегистрировано 38 крестьянских дворов, в них мужчин - 180, женщин - 194. Все они были
-					дворцовыми крестьянами. В 1733 году тщанием прихожан была построена деревянная Успенская
-					церковь. В конце XVIII века часть атмановских крестьян стали крепостными помещика Фёдора
-					Андреевича Давыдова. В списках населённых мест Тамбовской губернии по сведениям 1862 года,
-					именуется, как казённое село Отманов Угол при речке Пишлявке. Дворов было 208, а население
-					составляло 2130 человек (мужчин 1067, женщин 1103). С 1863 года действует Атманоугловская
-					школа. Школа размещалась в собственном деревянном одноэтажном здании, построенном
-					крестьянским обществом в 1862 году. По состоянию на 1880 год в селе насчитывался 251 двор
-					с населением 1885 человек. Имелись школа и лавки. По данным переписи 1897 года Атманов
-					Угол населяло 2304 человека (мужчин 1130, женщин 1174). В 1905 году на средства прихожан
-					было построено новое здание Успенской церкви - каменное и тёплое. Однако, на тот момент
-					сохранялось и старое деревянное здание. В 1910 году в селе было 360 домохозяйств, земли -
-					6065 десятин. В историко-статистическом описании Тамбовской епархии 1911 года сообщается,
-					что в Атманово имелось 322 двора, а население составляло 2610 человек (мужчин - 1292,
-					женщин - 1318). Занятиями жителей были исключительно кустарный и отхожий промыслы, выделка
-					колёс, телег, саней, сох, борон и работа в Донецких каменноугольных копях. Жители имели по
-					5 1/2 десятин песчаной земли на душу. По данным адрес-календаря на 1911 год в Атмановом
-					Углу было 365 дворов с населением 2688 человек (мужчин – 1325, женщин – 1363). До 1911
-					года в была открыта вторая школа – церковно-приходская. В ней обучали детей: заведующий и
-					законоучитель о. Алексий Орлов, учитель Василий Григорьевич Поповкин. В 1914 году в селе
-					проживало 2934 человек (мужчин – 1456, женщин – 1478). Земли имелось 3796 десятин. По
-					данным переписи 1926 года насчитывалось 482 хозяйства с населением 2786 человек (мужчин –
-					1313, женщин –1473). По спискам сельскохозяйственного налога на 1928-29 гг. в Атмановом
-					Углу было 492 хозяйства, жителей - 2992 человека. Во время Великой Отечественной войны на
-					фронтах погибло и пропало без вести 300 атмановцев.`,
-							}}
-						/>
+						{eventData?.page?.full && (
+							<div
+								dangerouslySetInnerHTML={{
+									__html: eventData?.page?.full,
+								}}
+							/>
+						)}
 					</p>
+					<div className={styles.inner}>
+						<h2>Реквизиты организатора</h2>
+						<FlexRow className={styles.creditsList}>
+							{data?.fullName && (
+								<FlexRow className={styles.creditItem}>
+									<p className={styles.title}>Полное название</p>
+									<p className={styles.credit}>{data?.fullName}</p>
+								</FlexRow>
+							)}
+							{data?.bank && (
+								<FlexRow className={styles.creditItem}>
+									<p className={styles.title}>Банк</p>
+									<p className={styles.credit}>{data?.bank}</p>
+								</FlexRow>
+							)}
+							{data?.bik && (
+								<FlexRow className={styles.creditItem}>
+									<p className={styles.title}>БИК</p>
+									<p className={styles.credit}>{data?.bik}</p>
+								</FlexRow>
+							)}
+							{data?.fioDir && (
+								<FlexRow className={styles.creditItem}>
+									<p className={styles.title}>ФИО руководителя</p>
+									<p className={styles.credit}>{data?.fioDir}</p>
+								</FlexRow>
+							)}
+							{data?.inn && (
+								<FlexRow className={styles.creditItem}>
+									<p className={styles.title}>ИНН</p>
+									<p className={styles.credit}>{data?.inn}</p>
+								</FlexRow>
+							)}
+							{data?.korChet && (
+								<FlexRow className={styles.creditItem}>
+									<p className={styles.title}>Кор. счет</p>
+									<p className={styles.credit}>{data?.korChet}</p>
+								</FlexRow>
+							)}
+							{data?.kpp && (
+								<FlexRow className={styles.creditItem}>
+									<p className={styles.title}>КПП</p>
+									<p className={styles.credit}>{data?.kpp}</p>
+								</FlexRow>
+							)}
+							{data?.ogrn && (
+								<FlexRow className={styles.creditItem}>
+									<p className={styles.title}>ОГРН</p>
+									<p className={styles.credit}>{data?.ogrn}</p>
+								</FlexRow>
+							)}
+							{data?.phone && (
+								<FlexRow className={styles.creditItem}>
+									<p className={styles.title}>Телефон</p>
+									<p className={styles.credit}>{data?.phone}</p>
+								</FlexRow>
+							)}
+							{data?.rasChet && (
+								<FlexRow className={styles.creditItem}>
+									<p className={styles.title}>Расчетный счет</p>
+									<p className={styles.credit}>{data?.rasChet}</p>
+								</FlexRow>
+							)}
+						</FlexRow>
+					</div>
 				</Container>
 			</Container>
 		</Section>

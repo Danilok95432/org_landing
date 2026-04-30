@@ -1,4 +1,4 @@
-import { type SwiperProps } from 'swiper/react/swiper-react'
+import { type SwiperProps } from 'swiper/react'
 
 export const programSliderOptions: SwiperProps = {
 	slidesPerView: 1,

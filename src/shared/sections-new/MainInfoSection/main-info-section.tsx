@@ -6,7 +6,9 @@ import cn from 'classnames'
 import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
 import { MainInfoPlaceSVG } from 'src/shared/ui/icons/mainInfoPlaceSVG'
 import { type FC, useState } from 'react'
-import { useGetEventByIdQuery } from 'src/features/home/api/home.api'
+// import { useGetEventByIdQuery } from 'src/features/home/api/home.api'
+import { useGetPageHeaderQuery } from 'src/features/pages-header/api/pages-header.api'
+import { useGetContactsQuery } from 'src/features/home/api/home.api'
 
 type MainInfoProps = {
 	id: string
@@ -14,7 +16,9 @@ type MainInfoProps = {
 }
 
 export const MainInfoSection: FC<MainInfoProps> = ({ id, offContMobile }) => {
-	const { data: eventData } = useGetEventByIdQuery(id, { skip: !id })
+	// const { data: eventData } = useGetEventByIdQuery(id, { skip: !id })
+	const { data: eventData } = useGetPageHeaderQuery('org')
+	const { data } = useGetContactsQuery('')
 	const [activeCont, setActiveCont] = useState<boolean>(false)
 
 	return (
@@ -22,24 +26,32 @@ export const MainInfoSection: FC<MainInfoProps> = ({ id, offContMobile }) => {
 			<Container className={cn(styles.cont, { [styles.offContMobile]: offContMobile })}>
 				<FlexRow className={styles.mainRow}>
 					<div className={styles.imgWrapper}>
-						<img src={orgImg} alt='main' className={styles.imgMain} />
+						<img
+							src={
+								eventData?.page?.mainphoto && eventData?.page?.mainphoto.length > 0
+									? eventData?.page?.mainphoto[0].original
+									: orgImg
+							}
+							alt='main'
+							className={styles.imgMain}
+						/>
 					</div>
 					<FlexRow className={styles.infoRow}>
-						<h1 id='event'>{'Тамбовское общество любителей краеведения'}</h1>
+						<h1 id='event'>{eventData?.page?.title}</h1>
 						<FlexRow className={styles.additionalInfoRow}>
 							<FlexRow className={cn(styles.rowEl, styles.noMargin, styles.locationEl)}>
 								<MainInfoPlaceSVG />
-								<a href='#'>{'ул. Кронштадтская, д. 58а, г. Тамбов, Тамбовская обл., Россия'}</a>
+								<a href='#'>{eventData?.page?.text2}</a>
 							</FlexRow>
+							<p>{data?.fullName}</p>
 						</FlexRow>
 						<FlexRow className={styles.infoRow}>
 							<div className={styles.textCont}>
 								<p className={cn(styles.text, { [styles.activeText]: activeCont })}>
-									{eventData?.description && (
+									{eventData?.page?.short && (
 										<div
 											dangerouslySetInnerHTML={{
-												__html:
-													'ТОЛК — это небольшая, но сплочённая организация единомышленников, которые постоянно участвуют в городских и областных мероприятиях, направленных на возрождение культурных и национальных традиций. Активисты ТОЛКа организуют передвижные выставки, становятся инициаторами конференций, публикуют статьи и книги, выступают в защиту памятников истории и культуры.',
+												__html: eventData?.page?.short,
 											}}
 										/>
 									)}

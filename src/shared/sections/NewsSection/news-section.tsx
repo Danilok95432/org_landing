@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useGetEventNewsByIdQuery } from 'src/features/home/api/home.api'
 import { Container } from '../../ui/Container/Container'
 import styles from './index.module.scss'
@@ -13,8 +15,6 @@ import { useNavigate } from 'react-router-dom'
 import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
 import { type CardNewsItem } from 'src/types/news'
 import { useBreakPoint } from 'src/features/useBreakPoint/useBreakPoint'
-
-import type { Swiper as SwiperType } from 'swiper'
 
 type NewsProps = {
 	id: string
@@ -88,7 +88,7 @@ export const NewsSection: FC<NewsProps> = ({ id }) => {
 
 	const [activeIndex, setActiveIndex] = useState(0)
 
-	const handleSlideChange = (swiper: SwiperType) => {
+	const handleSlideChange = (swiper: any) => {
 		setActiveIndex(swiper.activeIndex)
 	}
 

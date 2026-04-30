@@ -1,5 +1,5 @@
 import { type FC, type RefObject, useRef } from 'react'
-import type { SwiperRef } from 'swiper/react/swiper-react'
+import type { SwiperRef } from 'swiper/react'
 import { type MonthFilterItem } from 'src/types/global'
 
 import { uid } from 'react-uid'

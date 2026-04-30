@@ -1,5 +1,5 @@
 import { DisplayBreakpoints } from 'src/shared/helpers/consts'
-import { type SwiperProps } from 'swiper/react/swiper-react'
+import { type SwiperProps } from 'swiper/react'
 
 export const newsSliderOptions: SwiperProps = {
 	slidesPerView: 1,

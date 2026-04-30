@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Container } from '../../ui/Container/Container'
 import styles from './index.module.scss'
 import cn from 'classnames'
@@ -12,8 +14,6 @@ import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
 import { MainButton } from 'src/shared/ui/MainButton/MainButton'
 import { useNavigate } from 'react-router-dom'
 
-import type { Swiper as SwiperType } from 'swiper'
-
 type PartnersProps = {
 	id: string
 }
@@ -25,7 +25,7 @@ export const PartnersSection: FC<PartnersProps> = ({ id }) => {
 
 	const [activeIndex, setActiveIndex] = useState(0)
 
-	const handleSlideChange = (swiper: SwiperType) => {
+	const handleSlideChange = (swiper: any) => {
 		setActiveIndex(swiper.activeIndex)
 	}
 

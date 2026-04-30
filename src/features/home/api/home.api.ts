@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { MAIN_PROD_URL, ReducerPath } from 'src/shared/helpers/consts'
+import { type ContactsInfo } from 'src/types/contacts'
 import {
 	type CardEventItem,
 	type EventItem,
@@ -9,6 +10,7 @@ import {
 import { type FiltrationInfo } from 'src/types/global'
 import { type CardNewsItem } from 'src/types/news'
 import { type ProgramDay, type SubEventResponse } from 'src/types/program'
+import { type SiteSettings } from 'src/types/site-settings'
 import { type VideoItem } from 'src/types/videos'
 
 export const homeApi = createApi({
@@ -87,6 +89,16 @@ export const homeApi = createApi({
 				},
 			}),
 		}),
+		getContacts: build.query<ContactsInfo, string>({
+			query: () => ({
+				url: `contacts/getinfo`,
+			}),
+		}),
+		getSettingsSite: build.query<SiteSettings, null>({
+			query: () => ({
+				url: `settings/getinfo`,
+			}),
+		}),
 	}),
 })
 
@@ -101,4 +113,6 @@ export const {
 	useGetSubEventProgramByIdQuery,
 	useGetFaqByIdQuery,
 	useGetCurrentEventIdQuery,
+	useGetContactsQuery,
+	useGetSettingsSiteQuery,
 } = homeApi

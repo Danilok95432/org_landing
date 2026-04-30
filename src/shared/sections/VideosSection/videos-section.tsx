@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Container } from '../../ui/Container/Container'
 import styles from './index.module.scss'
 import cn from 'classnames'
@@ -11,8 +13,6 @@ import { homeVideosSliderOptions } from './consts'
 import { MainButton } from 'src/shared/ui/MainButton/MainButton'
 import { useNavigate } from 'react-router-dom'
 import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
-
-import type { Swiper as SwiperType } from 'swiper'
 
 type VideoProps = {
 	id: string
@@ -35,7 +35,7 @@ export const VideosSection: FC<VideoProps> = ({ id }) => {
 
 	const [activeIndex, setActiveIndex] = useState(0)
 
-	const handleSlideChange = (swiper: SwiperType) => {
+	const handleSlideChange = (swiper: any) => {
 		setActiveIndex(swiper.activeIndex)
 	}
 
