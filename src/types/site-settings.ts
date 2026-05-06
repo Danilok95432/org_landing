@@ -13,6 +13,9 @@ export type SiteSettings = {
 	phone: string
 	email: string
 	vk: string
+	rutube: string
+	address: string
+	certificate: string
 	title: string
 	copyright: string
 }
