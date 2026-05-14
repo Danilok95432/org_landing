@@ -18,18 +18,24 @@ export const Footer = () => {
 					<FlexRow className={styles.bottomRow}>
 						<FlexRow className={styles.contactsRow}>
 							<FlexRow className={styles.infoRow}>
-								<FlexRow className={styles.infoEl}>
-									<p className={styles.title}>Телефон</p>
-									<p>{data?.phone ?? '8 (999) 999-99-99'}</p>
-								</FlexRow>
-								<FlexRow className={styles.infoEl}>
-									<p className={styles.title}>Электронная почта</p>
-									<p>{data?.email ?? 'npotau@npotau.ru'}</p>
-								</FlexRow>
-								<FlexRow className={styles.infoEl}>
-									<p className={styles.title}>Адрес</p>
-									<p>{data?.address ?? '392003, г. Тамбов, б-р Энтузиастов, д. 2А, этаж 4'}</p>
-								</FlexRow>
+								{data?.phone && (
+									<FlexRow className={styles.infoEl}>
+										<p className={styles.title}>Телефон</p>
+										<p>{data?.phone ?? '8 (999) 999-99-99'}</p>
+									</FlexRow>
+								)}
+								{data?.email && (
+									<FlexRow className={styles.infoEl}>
+										<p className={styles.title}>Электронная почта</p>
+										<p>{data?.email ?? 'npotau@npotau.ru'}</p>
+									</FlexRow>
+								)}
+								{data?.address && (
+									<FlexRow className={styles.infoEl}>
+										<p className={styles.title}>Адрес</p>
+										<p>{data?.address ?? '392003, г. Тамбов, б-р Энтузиастов, д. 2А, этаж 4'}</p>
+									</FlexRow>
+								)}
 							</FlexRow>
 							<FlexRow className={styles.socialsRow}>
 								<a href={data?.vk ?? ''}>

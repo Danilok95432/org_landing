@@ -6,6 +6,17 @@ import { type ImageItem, type ImageItemWithText } from './photos'
 import { type ProgramDay } from './program'
 import { type VideoItem } from './videos'
 
+export type FaqListItem = {
+	title: string
+	content: string
+	id: string
+	cat_name: string
+}
+
+export type FaqListResponse = {
+	items: FaqListItem[]
+}
+
 export type EventDocumentItem = {
 	id: string
 	name: string

@@ -1,4 +1,4 @@
-import { useGetEventByIdQuery } from 'src/features/home/api/home.api'
+import { useGetAllFaqByIdQuery } from 'src/features/home/api/home.api'
 import { Container } from '../../ui/Container/Container'
 import styles from './index.module.scss'
 import cn from 'classnames'
@@ -12,14 +12,14 @@ type FaqProps = {
 }
 
 export const FaqSection: FC<FaqProps> = ({ id }) => {
-	const { data: faqEvent } = useGetEventByIdQuery(id, { skip: !id })
+	const { data: faqEvent } = useGetAllFaqByIdQuery(id, { skip: !id })
 	return (
 		<Section className={cn(styles.faq)}>
 			<Container>
 				<h2>Часто задаваемые вопросы</h2>
 				<div className={styles.homeFaqList}>
 					{faqEvent &&
-						[...(faqEvent?.faq || [])]
+						[...(faqEvent?.items || [])]
 							.sort((a, b) => Number(a?.id || 0) - Number(b?.id || 0))
 							.filter((faqEl) => faqEl?.title)
 							.map((faqEl, index) => (

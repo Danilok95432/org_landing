@@ -15,7 +15,7 @@ export const HomePage = () => {
 			{data?.isShowNews && <NewsSection id={'1'} />}
 			{data?.isShowVideos && <VideosSection id={'1'} />}
 			{data?.isShowPartners && <PartnersSection id={'1'} />}
-			{data?.isShowFaq && <FaqSection id={'1'} />}
+			{data?.isShowFaq && <FaqSection id={'0'} />}
 		</>
 	)
 }
