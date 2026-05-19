@@ -1,4 +1,3 @@
-import orgImg from 'src/assets/img/orgImg.png'
 import styles from './index.module.scss'
 import { Section } from 'src/shared/ui/Section/section'
 import { Container } from 'src/shared/ui/Container/Container'
@@ -30,7 +29,7 @@ export const MainInfoSection: FC<MainInfoProps> = ({ id, offContMobile }) => {
 							src={
 								eventData?.page?.mainphoto && eventData?.page?.mainphoto.length > 0
 									? eventData?.page?.mainphoto[0].original
-									: orgImg
+									: ''
 							}
 							alt='main'
 							className={styles.imgMain}

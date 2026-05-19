@@ -182,9 +182,16 @@ export const MainNavigation = () => {
 							</button>
 						))}
 					</ul>
-					<button className={styles.personMenu} aria-label='Профиль' title='Профиль'>
+					<a
+						className={styles.personMenu}
+						aria-label='Профиль'
+						title='Профиль'
+						href={'https://t6simple.npotau.ru/org/fond/info'}
+						target='_blank'
+						rel='noreferrer'
+					>
 						<PersonIconSvg />
-					</button>
+					</a>
 				</Container>
 			</nav>
 		</>

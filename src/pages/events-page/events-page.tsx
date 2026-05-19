@@ -82,6 +82,7 @@ export const EventsPage = () => {
 						changeActiveMonth={handleChangeActiveMonth}
 						activeMonth={activeMonth}
 						allMonthTitle='Все события'
+						className={styles.monthsFilter}
 					/>
 					{paginationData?.currentItems.length > 0 ? (
 						breakpoint === 'S' ? (
