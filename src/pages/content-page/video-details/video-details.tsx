@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, type FC } from 'react'
 import { Helmet } from 'react-helmet-async'
 
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import styles from './index.module.scss'
 import { useGetEventVideosByIdQuery } from 'src/features/home/api/home.api'
@@ -9,15 +9,54 @@ import { useGetVideoByIdQuery } from 'src/features/content/api/content'
 import { AsideVideos } from 'src/widgets/aside-videos/aside-videos'
 import { Section } from 'src/shared/ui/Section/section'
 import { Container } from 'src/shared/ui/Container/Container'
+import { type FetchBaseQueryError } from '@reduxjs/toolkit/query'
+import { toast } from 'react-toastify'
+
+type ApiErrorResponse = {
+	status: 'error'
+	error: string
+}
+
+const isFetchBaseQueryError = (error: unknown): error is FetchBaseQueryError => {
+	return typeof error === 'object' && error !== null && 'status' in error
+}
+
+const getApiErrorMessage = (error: unknown): string => {
+	if (isFetchBaseQueryError(error)) {
+		const errorData = error.data as Partial<ApiErrorResponse> | undefined
+
+		if (errorData?.status === 'error' && errorData?.error) {
+			return errorData.error
+		}
+	}
+
+	return 'Произошла ошибка при загрузке новости'
+}
 
 export const VideoDetails: FC = () => {
 	const { id } = useParams()
-	const { data: videoDetails } = useGetVideoByIdQuery(id ?? '')
+	const {
+		data: videoDetails,
+		error: newsItemError,
+		isError: isNewsItemError,
+	} = useGetVideoByIdQuery(id ?? '')
 	const { data: videosList = [] } = useGetEventVideosByIdQuery('1')
 
 	const [isSmallScreen, setIsSmallScreen] = useState(false)
 	const [, setPreviewCount] = useState<number>(1)
 	const contentRef = useRef<HTMLDivElement>(null)
+	const navigate = useNavigate()
+	useEffect(() => {
+		if (!isNewsItemError) return
+
+		const message = getApiErrorMessage(newsItemError)
+
+		toast.error(message, {
+			toastId: `news-error-${id}`,
+		})
+
+		navigate('/', { replace: true })
+	}, [isNewsItemError, newsItemError, navigate, id])
 	useEffect(() => {
 		const handleResize = () => {
 			setIsSmallScreen(window.innerWidth <= 1300)

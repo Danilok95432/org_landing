@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { useEffect, useRef, useState } from 'react'
 // import { type CardNewsItem } from 'src/types/news'
@@ -9,13 +9,53 @@ import { Container } from 'src/shared/ui/Container/Container'
 import { useGetNewsByIdQuery } from 'src/features/content/api/content'
 import { useGetEventNewsByIdQuery } from 'src/features/home/api/home.api'
 import { AsideNews } from 'src/widgets/aside-news/aside-news'
+import { type FetchBaseQueryError } from '@reduxjs/toolkit/query'
+import { toast } from 'react-toastify'
+
+type ApiErrorResponse = {
+	status: 'error'
+	error: string
+}
+
+const isFetchBaseQueryError = (error: unknown): error is FetchBaseQueryError => {
+	return typeof error === 'object' && error !== null && 'status' in error
+}
+
+const getApiErrorMessage = (error: unknown): string => {
+	if (isFetchBaseQueryError(error)) {
+		const errorData = error.data as Partial<ApiErrorResponse> | undefined
+
+		if (errorData?.status === 'error' && errorData?.error) {
+			return errorData.error
+		}
+	}
+
+	return 'Произошла ошибка при загрузке новости'
+}
 
 export const NewsDetailsNew = () => {
 	const { id } = useParams()
-	const { data: newsItemData } = useGetNewsByIdQuery(id ?? '')
+	const {
+		data: newsItemData,
+		error: newsItemError,
+		isError: isNewsItemError,
+	} = useGetNewsByIdQuery(id ?? '')
 	const { data: newsList = [] } = useGetEventNewsByIdQuery('1')
 	const [, setPreviewCount] = useState<number>(1)
 	const contentRef = useRef<HTMLDivElement>(null)
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (!isNewsItemError) return
+
+		const message = getApiErrorMessage(newsItemError)
+
+		toast.error(message, {
+			toastId: `news-error-${id}`,
+		})
+
+		navigate('/', { replace: true })
+	}, [isNewsItemError, newsItemError, navigate, id])
 
 	useEffect(() => {
 		const calculatePreviewCount = () => {
