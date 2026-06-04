@@ -1,5 +1,9 @@
 export const navigationElements = [
 	{
+		title: 'Об Атманках',
+		link: 'about',
+	},
+	{
 		title: 'События',
 		link: 'event',
 	},
@@ -8,15 +12,15 @@ export const navigationElements = [
 		link: 'news',
 	},
 	{
-		title: 'Видеолента',
+		title: 'Герои',
+		link: 'heroes',
+	},
+	{
+		title: 'Видео',
 		link: 'video',
 	},
 	{
-		title: 'Партнеры',
-		link: 'partners',
-	},
-	{
-		title: 'Организатор',
-		link: '/org',
+		title: 'Вопросы',
+		link: 'faq',
 	},
 ]

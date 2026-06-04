@@ -1,10 +1,35 @@
 .orgs {
-	h2 {
+	.btnRow {
+		justify-content: space-between;
+		align-items: center;
 		margin-bottom: 20px;
+		.sectionTitle {
+			font-size: 24px;
+			font-weight: 500;
+			@media (max-width: 768px) {
+				font-size: 20px;
+			}
+		}
+		.allBtn {
+			font-size: 18px;
+			padding: 12px 24px;
+			border-radius: 0px;
+			background: var(--main-theme-color);
+			height: max-content;
+			&:hover {
+				box-shadow: var(--box-shadow);
+			}
+			@media (max-width: 768px) {
+				color: var(--main-link-color);
+				background: none;
+				font-size: 16px;
+				padding: 0;
+			}
+		}
 	}
 	.partnersSliderBtns {
-		top: 50%;
-		width: calc(100% + 80px);
+		top: 70%;
+		width: calc(100% + 110px);
 		@media (max-width: 768px) {
 			display: none;
 		}
@@ -19,13 +44,13 @@
 			}
 		}
 		.partnerCard {
-			box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.12);
-			padding: 8px;
+			box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.12);
 			height: 100%;
-			border-radius: 12px;
+			border-radius: 4px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			background: transparent;
 			.partnersLink {
 				display: flex;
 				align-items: center;

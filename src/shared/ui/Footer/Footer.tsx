@@ -2,8 +2,8 @@ import { Container } from '../Container/Container'
 import { FlexRow } from '../FlexRow/FlexRow'
 import styles from './index.module.scss'
 import { VkSocialSvg } from '../icons/vkSocialSVG'
-import { RutubeSocialSvg } from '../icons/rutubeSocialSVG'
 import { useGetContactsQuery, useGetSettingsSiteQuery } from 'src/features/home/api/home.api'
+import { MaxSocialSvg } from '../icons/maxSocialSVG'
 
 export const Footer = () => {
 	const { data } = useGetSettingsSiteQuery(null)
@@ -14,57 +14,62 @@ export const Footer = () => {
 				<FlexRow className={styles.footerCont}>
 					<FlexRow className={styles.topRow}>
 						<p>{contactsData?.fullName}</p>
-					</FlexRow>
-					<FlexRow className={styles.bottomRow}>
-						<FlexRow className={styles.contactsRow}>
-							<FlexRow className={styles.infoRow}>
-								{data?.phone && (
-									<FlexRow className={styles.infoEl}>
-										<p className={styles.title}>Телефон</p>
-										<p>{data?.phone ?? '8 (999) 999-99-99'}</p>
-									</FlexRow>
-								)}
-								{data?.email && (
-									<FlexRow className={styles.infoEl}>
-										<p className={styles.title}>Электронная почта</p>
-										<p>{data?.email ?? 'npotau@npotau.ru'}</p>
-									</FlexRow>
-								)}
-								{data?.address && (
-									<FlexRow className={styles.infoEl}>
-										<p className={styles.title}>Адрес</p>
-										<p>{data?.address ?? '392003, г. Тамбов, б-р Энтузиастов, д. 2А, этаж 4'}</p>
-									</FlexRow>
-								)}
-							</FlexRow>
-							<FlexRow className={styles.socialsRow}>
-								<a href={data?.vk ?? ''}>
-									<FlexRow className={styles.socialEl}>
-										<VkSocialSvg />
-									</FlexRow>
-								</a>
-								{/* <a href=''>
+						<FlexRow className={styles.socialsRow}>
+							<a href={data?.vk ?? ''}>
+								<FlexRow className={styles.socialEl}>
+									<VkSocialSvg />
+								</FlexRow>
+							</a>
+							{/* <a href=''>
 									<FlexRow className={styles.socialEl}>
 										<TelegramSocialSvg />
 									</FlexRow>
 								</a> */}
-								<a href={data?.rutube ?? ''}>
-									<FlexRow className={styles.socialEl}>
-										<RutubeSocialSvg />
+							<a href={data?.rutube ?? ''}>
+								<FlexRow className={styles.socialEl}>
+									<MaxSocialSvg />
+								</FlexRow>
+							</a>
+						</FlexRow>
+					</FlexRow>
+					<FlexRow className={styles.bottomRow}>
+						<FlexRow className={styles.contactsRow}>
+							<p>Контакты</p>
+							<FlexRow className={styles.infoRow}>
+								{data?.phone && (
+									<FlexRow className={styles.infoEl}>
+										<p>{data?.phone ?? '8 (999) 999-99-99'}</p>
 									</FlexRow>
-								</a>
+								)}
+								{data?.address && (
+									<FlexRow className={styles.infoEl}>
+										<p>{data?.address ?? '392003, г. Тамбов, б-р Энтузиастов, д. 2А, этаж 4'}</p>
+									</FlexRow>
+								)}
+								{data?.email && (
+									<FlexRow className={styles.infoEl}>
+										<p>{data?.email ?? 'npotau@npotau.ru'}</p>
+									</FlexRow>
+								)}
+							</FlexRow>
+						</FlexRow>
+						<FlexRow className={styles.contactsRow}>
+							<p>Документы</p>
+							<FlexRow className={styles.infoRow}>
+								<FlexRow className={styles.infoEl}>
+									<p>{'Политика конфиденциальности'}</p>
+								</FlexRow>
+								<FlexRow className={styles.infoEl}>
+									<p>{'Согласие на обработку персональных данных'}</p>
+								</FlexRow>
+								<FlexRow className={styles.infoEl}>
+									<p>{'Пользовательское соглашение'}</p>
+								</FlexRow>
 							</FlexRow>
 						</FlexRow>
 						<FlexRow className={styles.bottomInfo}>
-							<FlexRow className={styles.author}>
-								<p className={styles.title}>© {data?.copyright}</p>
-								<p>
-									{data?.certificate ??
-										'Свидетельство о регистрации средства массовой информации Эл № ФС77 - 37229 от 14 августа 2009 г. Выдано Федеральной службой по надзору в сфере связи, информационных технологий и массовых коммуникаций (Роскомнадзор).'}
-								</p>
-							</FlexRow>
 							<FlexRow className={styles.developer}>
-								<p>Разработано и построено в НПО ТАУ. Платформа Т-6.</p>
+								<p>Разработано в ООО «НПО «ТАУ»</p>
 							</FlexRow>
 						</FlexRow>
 					</FlexRow>

@@ -9,28 +9,46 @@
 		gap: 0;
 		.topRow {
 			width: 100%;
-			padding-bottom: 32px;
-			border-bottom: 1px solid #ffffff70;
+			padding-bottom: 24px;
+			display: flex;
+			justify-content: space-between;
 			p {
-				font-size: 20px;
+				font-size: 24px;
 				font-weight: 500;
 				color: var(--additional-theme-color);
+			}
+			.socialsRow {
+				flex-direction: row;
+				gap: 24px;
+				.socialEl {
+					width: 32px;
+					height: 32px;
+					border-radius: 50%;
+					flex-direction: row;
+					justify-content: center;
+					align-items: center;
+					background: transparent;
+				}
 			}
 		}
 		.bottomRow {
 			width: 100%;
-			padding-top: 32px;
 			gap: 32px;
+			flex-wrap: nowrap;
 			.contactsRow {
 				width: 100%;
-				flex-direction: row;
+				flex-direction: column;
 				justify-content: space-between;
-				align-items: center;
-				flex-wrap: nowrap;
+				align-items: start;
+				p {
+					color: #fff;
+					font-size: 16px;
+					font-weight: 600;
+				}
 				.infoRow {
-					flex-direction: row;
-					gap: 56px;
-					align-items: center;
+					flex-direction: column;
+					gap: 16px;
+					align-items: start;
 					.infoEl {
 						flex-direction: column;
 						gap: 4px;
@@ -42,25 +60,14 @@
 						p {
 							font-size: 16px;
 							color: var(--additional-theme-color);
+							font-weight: 400;
 						}
-					}
-				}
-				.socialsRow {
-					flex-direction: row;
-					gap: 24px;
-					.socialEl {
-						width: 32px;
-						height: 32px;
-						border-radius: 50%;
-						flex-direction: row;
-						justify-content: center;
-						align-items: center;
-						background: var(--additional-theme-color);
 					}
 				}
 			}
 			.bottomInfo {
 				width: 100%;
+				height: 139px;
 				flex-direction: row;
 				gap: 0;
 				justify-content: end;
@@ -90,4 +97,3 @@
 		}
 	}
 }
-

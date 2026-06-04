@@ -2,11 +2,9 @@ import { Container } from 'src/shared/ui/Container/Container'
 import { navigationElements } from './consts'
 import styles from './index.module.scss'
 import { BurgerMenu } from './components/burger-menu/burger-menu'
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { LogoSVG } from 'src/shared/ui/icons/logoSVG'
 import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
-import { PersonIconSvg } from 'src/shared/ui/icons/personIconSVG'
 
 import cn from 'classnames'
 
@@ -15,7 +13,6 @@ export const MainNavigation = () => {
 	const navigate = useNavigate()
 
 	const navRef = useRef<HTMLElement | null>(null)
-	const [navHeight, setNavHeight] = useState(0)
 
 	const rafRef = useRef<number | null>(null)
 	const timeoutRef = useRef<number | null>(null)
@@ -31,39 +28,6 @@ export const MainNavigation = () => {
 			timeoutRef.current = null
 		}
 	}
-
-	useLayoutEffect(() => {
-		const navEl = navRef.current
-		if (!navEl) return
-
-		const measure = () => {
-			const navEl = navRef.current
-			if (!navEl) return
-
-			const h = Math.ceil(navEl.offsetHeight || navEl.getBoundingClientRect().height)
-
-			// важное: не даём спейсеру схлопнуться из-за промежуточного кадра layout
-			if (h <= 0) return
-
-			setNavHeight(h)
-		}
-		measure()
-
-		let ro: ResizeObserver | null = null
-		if ('ResizeObserver' in window) {
-			ro = new ResizeObserver(measure)
-			ro.observe(navEl)
-		}
-
-		window.addEventListener('resize', measure)
-		window.addEventListener('load', measure)
-
-		return () => {
-			ro?.disconnect()
-			window.removeEventListener('resize', measure)
-			window.removeEventListener('load', measure)
-		}
-	}, [])
 
 	const getHeaderOffset = () => navRef.current?.getBoundingClientRect().height ?? 0
 
@@ -139,36 +103,10 @@ export const MainNavigation = () => {
 		startSmoothScrollToId(sectionId)
 	}
 
-	const scrollToTop = () => {
-		cancelPending()
-		activeTargetRef.current = null
-
-		if (location.pathname === '/') {
-			window.history.replaceState(null, '', '/')
-			window.scrollTo({ top: 0, behavior: 'smooth' })
-			return
-		}
-		navigate('/', { replace: true })
-	}
-
 	return (
 		<>
-			<div
-				style={{
-					height: navHeight,
-					minHeight: navHeight,
-					maxHeight: navHeight,
-					flexBasis: navHeight,
-					flexShrink: 0,
-				}}
-				aria-hidden
-			/>
-
 			<nav ref={navRef} className={styles.navigation}>
 				<Container className={styles.navigationCont}>
-					<div className={styles.logoCont} onClick={scrollToTop}>
-						<LogoSVG />
-					</div>
 					<FlexRow className={styles.mobileRow}>
 						<BurgerMenu />
 					</FlexRow>
@@ -182,16 +120,6 @@ export const MainNavigation = () => {
 							</button>
 						))}
 					</ul>
-					<a
-						className={styles.personMenu}
-						aria-label='Профиль'
-						title='Профиль'
-						href={'https://t6simple.npotau.ru/org/fond/info'}
-						target='_blank'
-						rel='noreferrer'
-					>
-						<PersonIconSvg />
-					</a>
 				</Container>
 			</nav>
 		</>

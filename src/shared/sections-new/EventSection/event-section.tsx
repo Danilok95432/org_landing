@@ -50,8 +50,8 @@ export const EventsSection: FC = () => {
 						className={styles.eventsSliderBtns}
 						swiperRef={swiperRef}
 						color={'#fff'}
-						nextBtnColor='#000'
-						prevBtnColor='#000'
+						nextBtnColor='#0000000D'
+						prevBtnColor='#0000000D'
 					/>
 				</div>
 			</Container>

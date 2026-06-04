@@ -13,7 +13,7 @@
 		.allBtn {
 			font-size: 18px;
 			padding: 12px 24px;
-			border-radius: 12px;
+			border-radius: 0px;
 			background: var(--main-theme-color);
 			height: max-content;
 			&:hover {
@@ -29,7 +29,7 @@
 	}
 	.partnersSliderBtns {
 		top: 70%;
-		width: calc(100% + 80px);
+		width: calc(100% + 110px);
 		@media (max-width: 768px) {
 			display: none;
 		}
@@ -44,13 +44,14 @@
 		}
 		.partnerCard {
 			box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.12);
-			padding: 8px;
 			height: 100%;
-			border-radius: 12px;
+			border-radius: 4px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			background: transparent;
 			.partnersLink {
+				height: 100%;
 				display: flex;
 				align-items: center;
 				justify-content: center;

@@ -23,7 +23,7 @@
 	.allBtn {
 		font-size: 18px;
 		padding: 12px 24px;
-		border-radius: 12px;
+		border-radius: 0px;
 		background: var(--main-theme-color);
 		height: max-content;
 		&:hover {
@@ -55,7 +55,7 @@
 
 	.videoSliderBtns {
 		top: 50%;
-		width: calc(100% + 80px);
+		width: calc(100% + 110px);
 		@media (max-width: 768px) {
 			display: none;
 		}

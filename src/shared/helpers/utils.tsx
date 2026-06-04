@@ -378,6 +378,78 @@ export const getAgeString = (age: string): string => {
 	}
 }
 
+type DateRangeInput = [Date, Date] | [Date] | [string, string] | undefined
+
+const monthsGenitive = [
+	'января',
+	'февраля',
+	'марта',
+	'апреля',
+	'мая',
+	'июня',
+	'июля',
+	'августа',
+	'сентября',
+	'октября',
+	'ноября',
+	'декабря',
+]
+
+type DateParts = {
+	day: number
+	month: number
+	year: number
+}
+
+function getDateParts(date: Date | string): DateParts {
+	if (typeof date === 'string') {
+		const match = date.match(/^(\d{4})-(\d{2})-(\d{2})/)
+
+		if (!match) {
+			throw new Error(`Некорректная строка даты: ${date}`)
+		}
+
+		return {
+			year: Number(match[1]),
+			month: Number(match[2]) - 1,
+			day: Number(match[3]),
+		}
+	}
+
+	if (Number.isNaN(date.getTime())) {
+		throw new Error('Некорректный объект Date')
+	}
+
+	return {
+		year: date.getFullYear(),
+		month: date.getMonth(),
+		day: date.getDate(),
+	}
+}
+
+export function formatDatesRange(dates: DateRangeInput): string {
+	if (!dates) {
+		return ''
+	}
+
+	const start = getDateParts(dates[0])
+	const end = dates[1] ? getDateParts(dates[1]) : start
+
+	if (start.day === end.day && start.month === end.month && start.year === end.year) {
+		return `${start.day} ${monthsGenitive[start.month]} ${start.year}`
+	}
+
+	if (start.year === end.year && start.month === end.month) {
+		return `${start.day}-${end.day} ${monthsGenitive[start.month]} ${start.year}`
+	}
+
+	if (start.year === end.year) {
+		return `${start.day} ${monthsGenitive[start.month]} — ${end.day} ${monthsGenitive[end.month]} ${start.year}`
+	}
+
+	return `${start.day} ${monthsGenitive[start.month]} ${start.year} — ${end.day} ${monthsGenitive[end.month]} ${end.year}`
+}
+
 export const formatSingleDate = (dateString: Date | string): string => {
 	const date = new Date(dateString)
 

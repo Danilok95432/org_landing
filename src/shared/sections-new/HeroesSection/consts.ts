@@ -1,11 +1,10 @@
 import { DisplayBreakpoints } from 'src/shared/helpers/consts'
 import { type SwiperProps } from 'swiper/react'
 
-export const homeVideosSliderOptions: SwiperProps = {
+export const newsSliderOptions: SwiperProps = {
 	slidesPerView: 1.2,
 	slidesPerGroup: 1,
-	spaceBetween: 25,
-	grabCursor: true,
+	spaceBetween: 20,
 	breakpoints: {
 		[DisplayBreakpoints.Sm]: {
 			slidesPerView: 1.2,
@@ -17,10 +16,10 @@ export const homeVideosSliderOptions: SwiperProps = {
 			slidesPerView: 3,
 		},
 		[DisplayBreakpoints.Xl]: {
-			slidesPerView: 3,
+			slidesPerView: 4,
 		},
 		[DisplayBreakpoints.Xxl]: {
-			slidesPerView: 3,
+			slidesPerView: 4,
 		},
 	},
 }

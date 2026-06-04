@@ -44,8 +44,8 @@ export const VideosSection: FC<VideoProps> = ({ id }) => {
 		const isLastSlide = videos ? activeIndex === videos.length - 2 : false
 
 		return {
-			prevBtnColor: isFirstSlide ? '#00000040' : '#000',
-			nextBtnColor: isLastSlide ? '#00000040' : '#000',
+			prevBtnColor: isFirstSlide ? '#0000000D' : '#0000000D',
+			nextBtnColor: isLastSlide ? '#0000000D' : '#0000000D',
 		}
 	}
 
