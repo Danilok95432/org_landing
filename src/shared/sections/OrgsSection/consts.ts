@@ -14,22 +14,22 @@ export const partnersSliderOptions: SwiperProps = {
 	},
 	breakpoints: {
 		[DisplayBreakpoints.Xss]: {
-			slidesPerView: 3.5,
+			slidesPerView: 1,
 		},
 		[DisplayBreakpoints.Xs]: {
-			slidesPerView: 4,
+			slidesPerView: 2,
 		},
 		[DisplayBreakpoints.Sm]: {
-			slidesPerView: 5,
+			slidesPerView: 2,
 		},
 		[DisplayBreakpoints.Md]: {
-			slidesPerView: 6,
+			slidesPerView: 3,
 		},
 		[DisplayBreakpoints.ShortLg]: {
-			slidesPerView: 8,
+			slidesPerView: 4,
 		},
 		[DisplayBreakpoints.Lg]: {
-			slidesPerView: 8,
+			slidesPerView: 5,
 		},
 		[DisplayBreakpoints.Xll]: {
 			slidesPerView: 8,

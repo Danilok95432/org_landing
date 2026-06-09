@@ -35,6 +35,9 @@
 			width: 100%;
 			gap: 32px;
 			flex-wrap: nowrap;
+			@media (max-width: 768px) {
+				flex-wrap: wrap;
+			}
 			.contactsRow {
 				width: 100%;
 				flex-direction: column;

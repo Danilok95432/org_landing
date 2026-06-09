@@ -18,4 +18,5 @@ export type SiteSettings = {
 	certificate: string
 	title: string
 	copyright: string
+	metric: string
 }

@@ -18,6 +18,9 @@
 		}
 		.infoBlock {
 			max-width: max-content;
+			@media (max-width: 450px) {
+				display: none;
+			}
 		}
 		.loginBtn {
 			background: var(--additional-theme-color);

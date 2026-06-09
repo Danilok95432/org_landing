@@ -16,8 +16,11 @@
 			border-radius: 0px;
 			background: var(--main-theme-color);
 			height: max-content;
+			transition: all .3s ease-in-out;
 			&:hover {
 				box-shadow: var(--box-shadow);
+				padding: 0px 12px;
+				border-radius: 12px;
 			}
 			@media (max-width: 768px) {
 				color: var(--main-link-color);
@@ -50,6 +53,9 @@
 			align-items: center;
 			justify-content: center;
 			background: transparent;
+			@media (max-width: 768px) {
+				box-shadow: 0 0 0;
+			}
 			.partnersLink {
 				height: 100%;
 				display: flex;

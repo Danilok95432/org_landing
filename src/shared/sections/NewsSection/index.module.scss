@@ -55,8 +55,8 @@
 			align-items: center;
 			margin-bottom: 20px;
 			@media (max-width: 768px) {
-			padding-right: 24px;
-		}
+				padding-right: 24px;
+			}
 			.sectionTitle {
 				font-size: 32px;
 				font-weight: 500;
@@ -70,8 +70,11 @@
 				border-radius: 0px;
 				background: var(--main-theme-color);
 				height: max-content;
+				transition: all 0.3s ease-in-out;
 				&:hover {
 					box-shadow: var(--box-shadow);
+					padding: 0px 12px;
+					border-radius: 12px;
 				}
 				@media (max-width: 768px) {
 					color: var(--main-link-color);
@@ -83,4 +86,3 @@
 		}
 	}
 }
-

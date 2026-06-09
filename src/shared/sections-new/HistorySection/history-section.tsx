@@ -1,6 +1,6 @@
 import { Swiper, type SwiperRef, SwiperSlide } from 'swiper/react'
 import { Section } from 'src/shared/ui/Section/section'
-import { type FC, type RefObject, useRef } from 'react'
+import { type FC, type RefObject, useEffect, useRef, useState } from 'react'
 import { Container } from '../../ui/Container/Container'
 import styles from './index.module.scss'
 import cn from 'classnames'
@@ -14,10 +14,20 @@ export const HistorySection: FC<{ noTitle?: boolean; className?: string }> = ({
 	className,
 }) => {
 	const { data: history } = useGetEventAwardsByIdQuery('1')
+	const [isMobile, setIsMobile] = useState(false)
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsMobile(window.innerWidth <= 768)
+		}
+		handleResize()
+		window.addEventListener('resize', handleResize)
+		return () => window.removeEventListener('resize', handleResize)
+	}, [])
 	const swiperRef: RefObject<SwiperRef> = useRef<SwiperRef>(null)
 	return (
 		<Section className={cn(styles.history, className)}>
-			<Container>
+			<Container off={isMobile}>
 				<FlexRow className={styles.historyList}>
 					<Swiper {...eventsSliderOptions} ref={swiperRef}>
 						{history?.dates.map((el) => {

@@ -34,6 +34,20 @@ export const HeroesSection: FC<NewsProps> = ({ id }) => {
 				},
 			],
 		},
+		{
+			id: '2',
+			title: 'Герой 2',
+			desc: 'Описание героя 2',
+			mainphoto: [
+				{
+					original: 'https://via.placeholder.com/300x200',
+					thumbnail: 'https://via.placeholder.com/300x200',
+					title: 'Герой 2',
+					author: '',
+					id: '2',
+				},
+			],
+		},
 	]
 	const [isMobile, setIsMobile] = useState(false)
 	const navigate = useNavigate()

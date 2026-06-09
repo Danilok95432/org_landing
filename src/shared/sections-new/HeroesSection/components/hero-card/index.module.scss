@@ -2,7 +2,7 @@
 
 .newsItem {
   display: block;
-  border-radius: 16px;
+  border-radius: 4px;
   width: 290px;
   height: 100%;
   overflow: hidden;
@@ -39,9 +39,9 @@
 }
 
 div.radius {
-  border-radius: 16px;
+  border-radius: 4px;
   img {
-    border-radius: 16px;
+    border-radius: 4px;
   }
 }
 .newsImgWrapper {

@@ -13,7 +13,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 export const MainImgSection = () => {
 	const { data: eventData } = useGetEventByIdQuery('1')
 
-	const isSlider = true
+	const isSlider = false
 
 	// Потом сюда можно подставить массив картинок с бэка
 	const slides = [
