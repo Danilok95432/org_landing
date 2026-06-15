@@ -67,9 +67,9 @@ export const EventCard: FC<EventItemProps> = ({
 							{address}
 						</span>
 					</p>
-					{description && (
+					{/* {description && (
 						<div className={styles.eventDesc} dangerouslySetInnerHTML={{ __html: description }} />
-					)}
+					)} */}
 				</figcaption>
 			</figure>
 		</a>

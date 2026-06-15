@@ -14,14 +14,14 @@ export const HomePage = () => {
 	const { data } = useGetSettingsSiteQuery(null)
 	return (
 		<>
-			<MainImgSection />
+			{data?.isShowPromo && <MainImgSection />}
 			<HistorySection />
 			<MainSliderSection />
 			{data?.isShowEvents && <EventsSection />}
 			{data?.isShowNews && <NewsSection id={'1'} />}
 			<HeroesSection id={'1'} />
 			{data?.isShowVideos && <VideosSection id={'1'} />}
-			{data?.isShowPartners && <OrgsSection />}
+			{data?.isShowOrg && <OrgsSection />}
 			{data?.isShowPartners && <PartnersSection id={'1'} />}
 			{data?.isShowFaq && <FaqSection id={'0'} />}
 		</>

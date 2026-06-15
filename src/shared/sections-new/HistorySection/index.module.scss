@@ -21,6 +21,13 @@
       cursor: pointer;
     }
   }
+	.eventsSliderBtns {
+		width: calc(100% + 110px);
+		top: 55%;
+		@media (max-width: 768px) {
+			display: none;
+		}
+	}
   .paginationContainer {
     width: max-content;
     margin: 0 auto;

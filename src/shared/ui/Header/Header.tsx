@@ -29,7 +29,7 @@ export const Header = () => {
 		<header className={styles.header}>
 			<Container>
 				<FlexRow className={styles.headerRow}>
-					<Link to={'https://атманки.рф'} aria-label='Главная' title='Главная'>
+					<Link to={'/'} aria-label='Главная' title='Главная'>
 						{breakpoint === 'S' ? <LogoMobileSVG /> : <LogoSVG />}
 					</Link>
 					<div className={styles.infoBlock}>

@@ -3,33 +3,19 @@ import styles from './index.module.scss'
 import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
 import main from 'src/assets/img/main.png'
 import { MainButton } from 'src/shared/ui/MainButton/MainButton'
-import { useGetEventByIdQuery } from 'src/features/home/api/home.api'
+import { useGetEventByIdQuery, useGetSettingsSiteQuery } from 'src/features/home/api/home.api'
 import { formatDatesRange } from 'src/shared/helpers/utils'
 import { RaspEventSVG } from 'src/shared/ui/icons/raspEventSVG'
 import { Pagination, Autoplay } from 'swiper'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Link } from 'react-router-dom'
 
 export const MainImgSection = () => {
-	const { data: eventData } = useGetEventByIdQuery('1')
+	const { data } = useGetSettingsSiteQuery(null)
+	const { data: eventData } = useGetEventByIdQuery(data?.id_event ?? '1')
 
-	const isSlider = false
-
-	// Потом сюда можно подставить массив картинок с бэка
-	const slides = [
-		{
-			id: 1,
-			image: main,
-		},
-		{
-			id: 2,
-			image: main,
-		},
-		{
-			id: 3,
-			image: main,
-		},
-	]
+	const isSlider = data?.id_promo_block === '2'
 
 	const renderContent = (showControls: boolean) => (
 		<div className={styles.mainWrapper}>
@@ -40,22 +26,29 @@ export const MainImgSection = () => {
 
 			<FlexRow className={styles.imgControls}>
 				<h1>{eventData?.title ?? 'Атмановские Кулачки 2026'}</h1>
-				{showControls && (
-					<FlexRow className={styles.raspRow}>
-						<RaspEventSVG />
-						<p>Расписание события</p>
-					</FlexRow>
+				{showControls && data?.isShowBtnRasp && (
+					<Link to={`https://${data?.domain}/#program`}>
+						<FlexRow className={styles.raspRow}>
+							<RaspEventSVG />
+							<p>Расписание события</p>
+						</FlexRow>
+					</Link>
 				)}
 
-				{showControls && (
+				{showControls && (data?.isShowBtnBel ?? data?.isShowBtnRequest) && (
 					<FlexRow className={styles.controls}>
 						<FlexRow className={styles.topGroup}>
-							<MainButton className={styles.controlBtn}>Подать заявку (для участников)</MainButton>
-
-							<MainButton className={styles.controlBtnSpecial}>
-								<div className={styles.customSvgWrapper}></div>
-								<p>Регистрация и билеты</p>
-							</MainButton>
+							{data?.isShowBtnRequest && (
+								<MainButton className={styles.controlBtn}>
+									Подать заявку (для участников)
+								</MainButton>
+							)}
+							{data?.isShowBtnBel && (
+								<MainButton className={styles.controlBtnSpecial}>
+									<div className={styles.customSvgWrapper}></div>
+									<p>Регистрация и билеты</p>
+								</MainButton>
+							)}
 						</FlexRow>
 					</FlexRow>
 				)}
@@ -80,10 +73,10 @@ export const MainImgSection = () => {
 						pauseOnMouseEnter: true,
 					}}
 				>
-					{slides.map((slide) => (
+					{data?.slider_photo.map((slide) => (
 						<SwiperSlide key={slide.id}>
 							<div className={styles.slide}>
-								<img className={styles.mainImg} src={slide.image} alt='' />
+								<img className={styles.mainImg} src={slide.original} alt='' />
 								{renderContent(false)}
 							</div>
 						</SwiperSlide>
@@ -95,7 +88,13 @@ export const MainImgSection = () => {
 
 	return (
 		<Section className={styles.noPadding}>
-			<img className={styles.mainImg} src={main} alt='' />
+			<img
+				className={styles.mainImg}
+				src={
+					data?.promo_photo && data?.promo_photo.length > 0 ? data?.promo_photo[0].original : main
+				}
+				alt=''
+			/>
 			{renderContent(true)}
 		</Section>
 	)

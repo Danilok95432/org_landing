@@ -42,6 +42,13 @@ export const MainSliderSection = () => {
 						)
 					})}
 				</Swiper>
+				<SliderBtns
+					className={styles.eventsSliderBtns}
+					swiperRef={swiperRef}
+					color={'#fff'}
+					nextBtnColor='#0000000D'
+					prevBtnColor='#0000000D'
+				/>
 				<div className={cn('custom-pagination', styles.paginationContainer)}></div>
 				<SliderBtns className={styles.eventsSliderBtnsMobile} swiperRef={swiperRef} />
 			</Container>

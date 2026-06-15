@@ -18,10 +18,8 @@
 			height: max-content;
 			transition: all .3s ease-in-out;
 			&:hover {
-				box-shadow: var(--box-shadow);
-				padding: 0px 12px;
-				border-radius: 12px;
-			}
+					background: #D92800;
+				}
 			@media (max-width: 768px) {
 				color: var(--main-link-color);
 				background: none;

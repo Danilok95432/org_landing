@@ -11,6 +11,8 @@ import { useGetEventNewsByIdQuery } from 'src/features/home/api/home.api'
 import { AsideNews } from 'src/widgets/aside-news/aside-news'
 import { type FetchBaseQueryError } from '@reduxjs/toolkit/query'
 import { toast } from 'react-toastify'
+import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
+import { formatRussianDateTime } from 'src/shared/helpers/utils'
 
 type ApiErrorResponse = {
 	status: 'error'
@@ -85,30 +87,35 @@ export const NewsDetailsNew = () => {
 				<Section className={styles.newsListPage}>
 					<Container className={styles.newsContainer}>
 						<div className={styles.newsItemPageContent} ref={contentRef}>
-							<Link to={'/'} className={styles.linkBack}>
-								Назад на главную
+							<Link to={'/content'} className={styles.linkBack}>
+								Вернуться к новостям
 							</Link>
-							<img src={newsItemData?.mainphoto[0].original} alt='' />
-							<div className={styles.newsItemInfoContent}>
-								<div className={styles.contentInfo}>
+							<FlexRow className={styles.wrapper}>
+								<FlexRow className={styles.contentRow}>
+									<p className={styles.date}>{formatRussianDateTime(String(newsItemData?.date))}</p>
 									<h2>{newsItemData.title}</h2>
-									<div className={newsItemData?.short ? styles.newsShortDescs : ''}>
-										{newsItemData?.short && (
-											<div dangerouslySetInnerHTML={{ __html: newsItemData.short }} />
-										)}
+									<img src={newsItemData?.mainphoto[0].original} alt='' />
+									<div className={styles.newsItemInfoContent}>
+										<div className={styles.contentInfo}>
+											<div className={newsItemData?.short ? styles.newsShortDescs : ''}>
+												{newsItemData?.short && (
+													<div dangerouslySetInnerHTML={{ __html: newsItemData.short }} />
+												)}
+											</div>
+											<div className={styles.newsDescs}>
+												{newsItemData?.full && (
+													<div dangerouslySetInnerHTML={{ __html: newsItemData.full }} />
+												)}
+											</div>
+										</div>
 									</div>
-									<div className={styles.newsDescs}>
-										{newsItemData?.full && (
-											<div dangerouslySetInnerHTML={{ __html: newsItemData.full }} />
-										)}
-									</div>
+								</FlexRow>
+								<div className={styles.asideNewsDetails}>
+									<AsideNews currentNewsId={id ?? ''} newsList={newsList} previewCount={4} />
 								</div>
-							</div>
-							<div className={styles.asideNewsDetails}>
-								<AsideNews currentNewsId={id ?? ''} newsList={newsList} previewCount={4} />
-							</div>
-							<Link to={'/'} className={styles.linkBack}>
-								Назад на главную
+							</FlexRow>
+							<Link to={'/content'} className={styles.linkBack}>
+								Вернуться к новостям
 							</Link>
 						</div>
 					</Container>

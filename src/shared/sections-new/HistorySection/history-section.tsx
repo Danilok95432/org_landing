@@ -8,6 +8,7 @@ import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
 import { useGetEventAwardsByIdQuery } from 'src/features/home/api/home.api'
 import { eventsSliderOptions } from './consts'
 import { HistorySeporatorSVG } from 'src/shared/ui/icons/historySeporatorSVG'
+import { SliderBtns } from 'src/widgets/slider-btns/slider-btns'
 
 export const HistorySection: FC<{ noTitle?: boolean; className?: string }> = ({
 	noTitle = false,
@@ -44,6 +45,13 @@ export const HistorySection: FC<{ noTitle?: boolean; className?: string }> = ({
 							)
 						})}
 					</Swiper>
+					<SliderBtns
+						className={styles.eventsSliderBtns}
+						swiperRef={swiperRef}
+						color={'#fff'}
+						nextBtnColor='#0000000D'
+						prevBtnColor='#0000000D'
+					/>
 				</FlexRow>
 			</Container>
 		</Section>

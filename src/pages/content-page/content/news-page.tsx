@@ -101,7 +101,7 @@ export const NewsPage = () => {
 	// Функция для рендеринга элемента в зависимости от типа
 	const renderItem = (item: VideoItem | CardNewsItem) => {
 		if ('duration' in item) {
-			return <VideoCard key={item.id} shouldDate {...item} />
+			return <VideoCard key={item.id} shouldDate {...item} smallCard />
 		}
 		return <NewsCard key={item.id} titleLink {...item} noShadow />
 	}

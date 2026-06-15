@@ -11,6 +11,8 @@ import { Section } from 'src/shared/ui/Section/section'
 import { Container } from 'src/shared/ui/Container/Container'
 import { type FetchBaseQueryError } from '@reduxjs/toolkit/query'
 import { toast } from 'react-toastify'
+import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
+import { formatRussianDateTime } from 'src/shared/helpers/utils'
 
 type ApiErrorResponse = {
 	status: 'error'
@@ -95,33 +97,38 @@ export const VideoDetails: FC = () => {
 			<Section>
 				<Container>
 					<div className={styles.videoDetailPage}>
-						<Link to={'/'} className={styles.linkBack}>
-							Назад на главную
+						<Link to={'/content'} className={styles.linkBack}>
+							Вернуться к видеозаписям
 						</Link>
-						<div className={styles.mainVideo}>
-							<iframe
-								src={videoDetails.url ?? ''}
-								allow='encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;'
-								allowFullScreen
-							></iframe>
-						</div>
-						<div className={styles.videoContent} ref={contentRef}>
-							<div className={styles.contentInfo}>
-								<h2>{videoDetails?.title}</h2>
-								<div className={styles.descVideo}>
-									<p className={styles.descVideoText}>{videoDetails?.short}</p>
+						<FlexRow className={styles.wrapper}>
+							<FlexRow className={styles.contentRow}>
+								<p className={styles.date}>{formatRussianDateTime(String(videoDetails?.date))}</p>
+								<h2>{videoDetails.title}</h2>
+								<div className={styles.mainVideo}>
+									<iframe
+										src={videoDetails.url ?? ''}
+										allow='encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;'
+										allowFullScreen
+									></iframe>
 								</div>
-							</div>
-						</div>
-						<AsideVideos
-							videosList={videosList}
-							title='Похожие видео'
-							orient={isSmallScreen ? 'horizontal' : 'vertical'}
-							currentVideoId={id}
-							previewCount={4}
-						/>
-						<Link to={'/'} className={styles.linkBack}>
-							Назад на главную
+								<div className={styles.videoContent} ref={contentRef}>
+									<div className={styles.contentInfo}>
+										<div className={styles.descVideo}>
+											<p className={styles.descVideoText}>{videoDetails?.short}</p>
+										</div>
+									</div>
+								</div>
+							</FlexRow>
+							<AsideVideos
+								videosList={videosList}
+								title='Другие видеоролики'
+								orient={isSmallScreen ? 'horizontal' : 'vertical'}
+								currentVideoId={id}
+								previewCount={4}
+							/>
+						</FlexRow>
+						<Link to={'/content'} className={styles.linkBack}>
+							Вернуться к видеозаписям
 						</Link>
 					</div>
 				</Container>
