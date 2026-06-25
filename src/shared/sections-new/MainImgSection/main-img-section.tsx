@@ -21,7 +21,7 @@ export const MainImgSection = () => {
 		<div className={styles.mainWrapper}>
 			<FlexRow className={styles.desc}>
 				<p>{formatDatesRange(eventData?.date)}</p>
-				<p className={styles.location}>{eventData?.location.address}</p>
+				<p className={styles.location}>{eventData?.location?.address}</p>
 			</FlexRow>
 
 			<FlexRow className={styles.imgControls}>

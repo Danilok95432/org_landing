@@ -3,6 +3,8 @@
 	display: flex;
 	flex-direction: row;
 	gap: 25px;
+	margin: 0 auto;
+	max-width: 1230px;
 }
 
 .breakpointNews {
@@ -37,6 +39,10 @@
 
 .news {
 	padding: 27px 0 11px;
+	.newsWrapper {
+		max-width: 1230px;
+		margin: 0 auto;
+	}
 	.newsSlider {
 		position: relative;
 		padding: 5px;
@@ -45,7 +51,7 @@
 		position: relative;
 		.newsSliderBtns {
 			top: 77%;
-			width: calc(100% + 110px);
+			width: calc(100% + 118px);
 			@media (max-width: 768px) {
 				display: none;
 			}
@@ -72,7 +78,7 @@
 				height: max-content;
 				transition: all 0.3s ease-in-out;
 				&:hover {
-					background: #D92800;
+					background: #B30834;
 				}
 				@media (max-width: 768px) {
 					color: var(--main-link-color);

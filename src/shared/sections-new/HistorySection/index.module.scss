@@ -22,8 +22,8 @@
     }
   }
 	.eventsSliderBtns {
-		width: calc(100% + 110px);
-		top: 55%;
+		width: calc(100% + 118px);
+		top: 33%;
 		@media (max-width: 768px) {
 			display: none;
 		}
@@ -62,7 +62,7 @@
 			}
 		}
 		.eventsSliderBtns {
-			top: 40%;
+			top: 33%;
 			button {
 				background: #ffffff79;
 			}

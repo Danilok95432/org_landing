@@ -1,4 +1,29 @@
 .asideNews {
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+
+	:global(.slider-with-btns) {
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
+	}
+
+	:global(.swiper) {
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
+		overflow: hidden;
+	}
+
+	:global(.swiper-wrapper) {
+		min-width: 0;
+	}
+
+	:global(.swiper-slide) {
+		min-width: 0;
+		box-sizing: border-box;
+	}
 	.asideNewsTitle {
 		font-size: 24px;
 		margin-bottom: 24px;
@@ -7,6 +32,7 @@
 	@media (max-width: 768px) {
 		min-width: auto;
 		width: 100%;
+		max-width: 100%;
 	}
 	.newsList {
 		display: flex;
@@ -38,6 +64,9 @@
 		}
 	}
   .newsSliderBtns {
+		top: 40%;
+		width: 100%;
+		height: max-content;
 		@media (max-width: 768px) {
 			top: 40%;
 			width: 70%;

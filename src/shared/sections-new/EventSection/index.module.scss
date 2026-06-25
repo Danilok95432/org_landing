@@ -1,12 +1,22 @@
 .eventsSection {
-	padding: 37px 0 40px;
-
+	padding: 60px 0 33px;
+	.sliderWrapper {
+		max-width: 1230px;
+		margin: 0 auto;
+	}
 	.slider {
-		padding: 10px 0;
+		padding: 5px;
+		display: flex;
+		justify-content: center;
+		:global {
+			.swiper-wrapper {
+				max-width: 1220px;
+			}
+		}
 	}
 
 	.eventsSectionRow {
-		margin: 17px 0;
+		margin: 14px 0;
 		align-items: center;
 		justify-content: space-between;
 		gap: 17px;
@@ -29,10 +39,10 @@
 		border-radius: 0px;
 		background: var(--main-theme-color);
 		height: max-content;
-		transition: all .3s ease-in-out;
-			&:hover {
-					background: #D92800;
-				}
+		transition: all 0.3s ease-in-out;
+		&:hover {
+			background: #b30834;
+		}
 		@media (max-width: 768px) {
 			color: var(--main-link-color);
 			background: none;
@@ -46,7 +56,7 @@
 	}
 
 	.eventsSliderBtns {
-		width: calc(100% + 110px);
+		width: calc(100% + 118px);
 		top: 55%;
 		@media (max-width: 768px) {
 			display: none;

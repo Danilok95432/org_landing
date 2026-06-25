@@ -36,25 +36,24 @@ export const EventsSection: FC = () => {
 						Все события
 					</MainButton>
 				</FlexRow>
-
-				<div>
-					<Swiper {...eventsSliderOptions} ref={swiperRef} className={styles.slider}>
-						{homeEvents?.map((slideItem, idx) => (
-							<SwiperSlide key={idx}>
-								<EventCard className={styles.homeEventCard} {...slideItem} />
-							</SwiperSlide>
-						))}
-					</Swiper>
-
-					<SliderBtns
-						className={styles.eventsSliderBtns}
-						swiperRef={swiperRef}
-						color={'#fff'}
-						nextBtnColor='#0000000D'
-						prevBtnColor='#0000000D'
-					/>
-				</div>
 			</Container>
+			<div className={styles.sliderWrapper}>
+				<Swiper {...eventsSliderOptions} ref={swiperRef} className={styles.slider}>
+					{homeEvents?.map((slideItem, idx) => (
+						<SwiperSlide key={idx}>
+							<EventCard className={styles.homeEventCard} {...slideItem} />
+						</SwiperSlide>
+					))}
+				</Swiper>
+
+				<SliderBtns
+					className={styles.eventsSliderBtns}
+					swiperRef={swiperRef}
+					color={'#fff'}
+					nextBtnColor='#0000000D'
+					prevBtnColor='#0000000D'
+				/>
+			</div>
 		</Section>
 	)
 }

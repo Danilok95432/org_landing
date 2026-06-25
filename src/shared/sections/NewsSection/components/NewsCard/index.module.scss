@@ -1,129 +1,166 @@
 @use 'src/assets/styles/helpers' as *;
 
 .newsItem {
-  display: block;
-  border-radius: 4px;
-  width: 290px;
-  height: 100%;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 0 5px 0 rgba(1, 61, 86, 0.15);
+	display: block;
+	border-radius: 4px;
+	width: 290px;
+	height: 100%;
+	overflow: hidden;
+	cursor: pointer;
+	box-shadow: 0 0 5px 0 rgba(1, 61, 86, 0.15);
 
-  @media (max-width: 768px) {
-    width: 290px;
-    height: 100%;
-  }
+	@media (max-width: 768px) {
+		width: 290px;
+		height: 100%;
+	}
+
+	&:hover {
+		background: var(--main-theme-color);
+		color: #fff;
+	}
+
+	&:hover .newsItemContent {
+		background: var(--main-theme-color);
+		color: #fff;
+		h4 {
+			color: #fff;
+		}
+    .newsDate {
+      color: #fff;
+    }
+	}
 }
 
 .noShadow {
-  box-shadow: none;
+	box-shadow: none;
 }
 
 .contentItem {
-  .newsImgWrapper {
-    height: 163px;
-  }
+	.newsImgWrapper {
+		height: 163px;
+	}
 }
 
 .mainNewsContainer {
-  display: flex;
-  flex-direction: row;
-  .newsImgWrapper {
-    width: 464px;
-    height: 100%;
-  }
-  .newsItemContent {
-    width: 320px;
-    padding: 55px 25px;
-  }
+	display: flex;
+	flex-direction: row;
+	.newsImgWrapper {
+		width: 464px;
+		height: 100%;
+	}
+	.newsItemContent {
+		max-width: 436px;
+    width: 100%;
+		padding: 38.5px 32px;
+	}
 }
 
 div.radius {
-  border-radius: 4px;
-  img {
-    border-radius: 4px;
-  }
+	border-radius: 4px;
+	img {
+		border-radius: 4px;
+	}
 }
 .newsImgWrapper {
-  width: 100%;
-  height: 190px;
-  border-radius: 0 0 0;
+	width: 100%;
+	height: 190px;
+	border-radius: 0 0 0;
 
-  @media (max-width: 768px) {
-    height: 200px;
-  }
+	@media (max-width: 768px) {
+		height: 200px;
+	}
 
-  @media (max-width: 440px) {
-    height: 160px;
-  }
+	@media (max-width: 440px) {
+		height: 160px;
+	}
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  	object-position: top left;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000px;
-    
-    /* Улучшает рендеринг в WebKit */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    
-    /* Предотвращает размытие при трансформациях */
-    filter: blur(0);
-    -webkit-filter: blur(0);
-    
-    /* Для скругленных углов */
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: -webkit-radial-gradient(white, black);
-  }
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: top left;
+		transform: translateZ(0);
+		backface-visibility: hidden;
+		perspective: 1000px;
+
+		/* Улучшает рендеринг в WebKit */
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+
+		/* Предотвращает размытие при трансформациях */
+		filter: blur(0);
+		-webkit-filter: blur(0);
+
+		/* Для скругленных углов */
+		-webkit-mask-image: -webkit-radial-gradient(white, black);
+		mask-image: -webkit-radial-gradient(white, black);
+	}
 }
 
 .newsItemContent {
-  padding: 16px;
-  transition: all .3s;
-  min-height: 145px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  background: var(--color-white);
+	padding: 16px;
+	transition: all 0.3s;
+	min-height: 145px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background: var(--color-white);
 
-  .newsDate,
-  .newsDesc {
-    font-size: 16px;
-  }
+	.newsDate,
+	.newsDesc {
+		font-size: 16px;
+	}
 
-  .newsItemTitle {
-    font-size: 16px;
-    line-height: 1.3;
-    font-weight: 500;
-    height: 66px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+  .newsItemTitleMain {
+		font-size: 24px;
+		line-height: 1.3;
+		font-weight: 500;
+		height: 132px;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		line-clamp: 3;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		max-height: 132px;
+		color: #000;
+	}
+
+	.newsItemTitle {
+		font-size: 16px;
+		line-height: 1.3;
+		font-weight: 500;
+		height: 66px;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 3;
 		line-clamp: 3;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		max-height: 66px;
-    color: #000;
-  }
+		color: #000;
+	}
 }
 
 .newsDate {
-  color: var(--color-gray-03);
+	color: var(--color-gray-03);
 }
 
 .newsDesc {
-  font-size: 16px;
-  line-height: 1.2;
+	font-size: 16px;
+	line-height: 1.2;
+  max-height: 80px;
+  line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
-  @include mobile {
-    display: none;
-  }
+	@include mobile {
+		display: none;
+	}
 }
 
 .linkTitle {
-  color: var(--main-link-color);
+	color: var(--main-link-color);
 }

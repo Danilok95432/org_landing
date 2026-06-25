@@ -6,6 +6,7 @@ import styles from './index.module.scss'
 import { EventStatus } from '../event-status/event-status'
 import { type CardEventItem } from 'src/types/event'
 import { getDayOfWeek, mainFormatDate, parseTimeFromDate } from 'src/shared/helpers/utils'
+import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
 
 type EventItemProps = {
 	className?: string
@@ -19,6 +20,7 @@ export const EventCard: FC<EventItemProps> = ({
 	title,
 	siteurl,
 	date,
+	endDate,
 	status,
 	mainphoto,
 	description,
@@ -49,7 +51,10 @@ export const EventCard: FC<EventItemProps> = ({
 			<figure className={cn(styles.eventItem, className)}>
 				<div className='event-item-img'>
 					<img src={mainphoto[0]?.original} alt={title} width={415} height={256} loading='lazy' />
-					<span>{brandTitle}</span>
+					<FlexRow className={'row'}>
+						<span className='brand'>{brandTitle ?? 'Русские игры'}</span>
+						<span className='cat'>{catTitle ?? 'Фестиваль'}</span>
+					</FlexRow>
 				</div>
 				<figcaption className={cn(styles.eventContent, 'event-card-content')}>
 					<h3 className={styles.eventTitle}>{title}</h3>
@@ -59,6 +64,11 @@ export const EventCard: FC<EventItemProps> = ({
 					</p>
 					<p className={styles.eventTime}>
 						{date ? `Начало в ${parseTimeFromDate(date)}` : 'Нет информации о времени начала'}
+					</p>
+					<p className={styles.eventTime}>
+						{endDate
+							? `Окончание в ${parseTimeFromDate(endDate)}`
+							: 'Нет информации о времени окончания'}
 					</p>
 					<p className={styles.eventLocations}>
 						<span>

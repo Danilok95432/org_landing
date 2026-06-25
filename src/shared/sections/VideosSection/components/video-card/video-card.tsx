@@ -27,7 +27,7 @@ export const VideoCard: FC<VideoCardProps> = ({
 	return (
 		<Link
 			className={cn(styles.videoCard, className, { [styles.smallCard]: smallCard })}
-			to={`/content/videos/${id}`}
+			to={`/videos/${id}`}
 		>
 			<div className={styles.videoThumbWrapper}>
 				<img src={mainphoto[0]?.original} alt={title} />

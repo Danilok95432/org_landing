@@ -5,6 +5,8 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 import styles from './index.module.scss'
 import { navigationElements } from '../../consts'
+import { PersonIconSvg } from 'src/shared/ui/icons/personIconSVG'
+import { MainButton } from 'src/shared/ui/MainButton/MainButton'
 
 export const BurgerMenu = () => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -146,6 +148,10 @@ export const BurgerMenu = () => {
 						</li>
 					))}
 				</ul>
+				<MainButton className={styles.loginBtn}>
+					<PersonIconSvg color='white' />
+					<p>Войти</p>
+				</MainButton>
 			</nav>
 		</div>
 	)

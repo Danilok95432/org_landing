@@ -56,7 +56,7 @@ export const VideosSection: FC<VideoProps> = ({ id }) => {
 			<Container off={isMobile}>
 				<FlexRow className={styles.btnRow}>
 					<h2 className={styles.sectionTitle}>Видеолента</h2>
-					<MainButton className={styles.allBtn} onClick={() => navigate('/content?onlyVideo=1')}>
+					<MainButton className={styles.allBtn} onClick={() => navigate('/videos')}>
 						Все видео
 					</MainButton>
 				</FlexRow>

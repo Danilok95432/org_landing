@@ -113,53 +113,53 @@ export const NewsSection: FC<NewsProps> = ({ id }) => {
 						Все новости
 					</MainButton>
 				</FlexRow>
-				{!isMobile && (
-					<div className={styles.breakpointNews}>
-						{mainNews ? (
-							<>
-								<div className={styles.mainNews}>
-									<NewsCard {...mainNews} mainStatus={true} className={styles.mainNewsCard} />
-								</div>
-								<div className={styles.topNews}>
-									{topNews.map((news) => (
-										<NewsCard className={styles.defaultNewsCard} key={news.id} {...news} />
-									))}
-								</div>
-							</>
-						) : (
+			</Container>
+			{!isMobile && (
+				<div className={styles.breakpointNews}>
+					{mainNews ? (
+						<>
+							<div className={styles.mainNews}>
+								<NewsCard {...mainNews} mainStatus={true} className={styles.mainNewsCard} />
+							</div>
 							<div className={styles.topNews}>
 								{topNews.map((news) => (
 									<NewsCard className={styles.defaultNewsCard} key={news.id} {...news} />
 								))}
 							</div>
-						)}
-					</div>
-				)}
-				{sliderNews && sliderNews?.length > 0 && (
-					<>
-						<Swiper
-							{...newsSliderOptions}
-							ref={swiperRef}
-							className={styles.newsSlider}
-							onSlideChange={handleSlideChange}
-							onInit={(swiper) => setActiveIndex(swiper.activeIndex)}
-						>
-							{sliderNews.map((newsEl, idx) => (
-								<SwiperSlide className={styles.newsSlide} key={idx}>
-									<NewsCard key={newsEl.id} {...newsEl} />
-								</SwiperSlide>
+						</>
+					) : (
+						<div className={styles.topNews}>
+							{topNews.map((news) => (
+								<NewsCard className={styles.defaultNewsCard} key={news.id} {...news} />
 							))}
-						</Swiper>
-						<SliderBtns
-							className={styles.newsSliderBtns}
-							swiperRef={swiperRef}
-							color={'#fff'}
-							nextBtnColor={nextBtnColor}
-							prevBtnColor={prevBtnColor}
-						/>
-					</>
-				)}
-			</Container>
+						</div>
+					)}
+				</div>
+			)}
+			{sliderNews && sliderNews?.length > 0 && (
+				<div className={styles.newsWrapper}>
+					<Swiper
+						{...newsSliderOptions}
+						ref={swiperRef}
+						className={styles.newsSlider}
+						onSlideChange={handleSlideChange}
+						onInit={(swiper) => setActiveIndex(swiper.activeIndex)}
+					>
+						{sliderNews.map((newsEl, idx) => (
+							<SwiperSlide className={styles.newsSlide} key={idx}>
+								<NewsCard key={newsEl.id} {...newsEl} />
+							</SwiperSlide>
+						))}
+					</Swiper>
+					<SliderBtns
+						className={styles.newsSliderBtns}
+						swiperRef={swiperRef}
+						color={'#fff'}
+						nextBtnColor={nextBtnColor}
+						prevBtnColor={prevBtnColor}
+					/>
+				</div>
+			)}
 		</Section>
 	)
 }

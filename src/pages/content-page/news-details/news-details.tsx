@@ -43,7 +43,7 @@ export const NewsDetailsNew = () => {
 		isError: isNewsItemError,
 	} = useGetNewsByIdQuery(id ?? '')
 	const { data: newsList = [] } = useGetEventNewsByIdQuery('1')
-	const [, setPreviewCount] = useState<number>(1)
+	const [previewCount, setPreviewCount] = useState<number>(1)
 	const contentRef = useRef<HTMLDivElement>(null)
 	const navigate = useNavigate()
 
@@ -94,14 +94,14 @@ export const NewsDetailsNew = () => {
 								<FlexRow className={styles.contentRow}>
 									<p className={styles.date}>{formatRussianDateTime(String(newsItemData?.date))}</p>
 									<h2>{newsItemData.title}</h2>
+									<div className={newsItemData?.short ? styles.newsShortDescs : ''}>
+										{newsItemData?.short && (
+											<div dangerouslySetInnerHTML={{ __html: newsItemData.short }} />
+										)}
+									</div>
 									<img src={newsItemData?.mainphoto[0].original} alt='' />
 									<div className={styles.newsItemInfoContent}>
 										<div className={styles.contentInfo}>
-											<div className={newsItemData?.short ? styles.newsShortDescs : ''}>
-												{newsItemData?.short && (
-													<div dangerouslySetInnerHTML={{ __html: newsItemData.short }} />
-												)}
-											</div>
 											<div className={styles.newsDescs}>
 												{newsItemData?.full && (
 													<div dangerouslySetInnerHTML={{ __html: newsItemData.full }} />
@@ -111,7 +111,11 @@ export const NewsDetailsNew = () => {
 									</div>
 								</FlexRow>
 								<div className={styles.asideNewsDetails}>
-									<AsideNews currentNewsId={id ?? ''} newsList={newsList} previewCount={4} />
+									<AsideNews
+										currentNewsId={id ?? ''}
+										newsList={newsList}
+										previewCount={previewCount}
+									/>
 								</div>
 							</FlexRow>
 							<Link to={'/content'} className={styles.linkBack}>

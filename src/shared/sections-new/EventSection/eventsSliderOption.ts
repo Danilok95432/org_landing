@@ -4,7 +4,7 @@ import { type SwiperProps } from 'swiper/react'
 export const eventsSliderOptions: SwiperProps = {
 	slidesPerView: 1.2,
 	slidesPerGroup: 1,
-	spaceBetween: 25,
+	spaceBetween: 20,
 	autoHeight: false,
 	breakpoints: {
 		[DisplayBreakpoints.Sm]: {

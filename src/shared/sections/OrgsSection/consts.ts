@@ -32,10 +32,10 @@ export const partnersSliderOptions: SwiperProps = {
 			slidesPerView: 5,
 		},
 		[DisplayBreakpoints.Xll]: {
-			slidesPerView: 7,
+			slidesPerView: 6,
 		},
 		[DisplayBreakpoints.Xxl]: {
-			slidesPerView: 7,
+			slidesPerView: 6,
 		},
 	},
 }

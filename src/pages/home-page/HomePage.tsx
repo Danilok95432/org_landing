@@ -8,18 +8,19 @@ import { MainSliderSection } from 'src/shared/sections/MainSliderSection/main-sl
 import { OrgsSection } from 'src/shared/sections/OrgsSection/orgs-section'
 import { HistorySection } from 'src/shared/sections-new/HistorySection/history-section'
 import { MainImgSection } from 'src/shared/sections-new/MainImgSection/main-img-section'
-import { HeroesSection } from 'src/shared/sections-new/HeroesSection/heroes-section'
+// import { HeroesSection } from 'src/shared/sections-new/HeroesSection/heroes-section'
 
 export const HomePage = () => {
 	const { data } = useGetSettingsSiteQuery(null)
+	console.log(data?.isShowOrg)
 	return (
 		<>
 			{data?.isShowPromo && <MainImgSection />}
-			<HistorySection />
+			{data?.isShowHistory && <HistorySection />}
 			<MainSliderSection />
 			{data?.isShowEvents && <EventsSection />}
 			{data?.isShowNews && <NewsSection id={'1'} />}
-			<HeroesSection id={'1'} />
+			{/* <HeroesSection id={'1'} /> */}
 			{data?.isShowVideos && <VideosSection id={'1'} />}
 			{data?.isShowOrg && <OrgsSection />}
 			{data?.isShowPartners && <PartnersSection id={'1'} />}

@@ -18,7 +18,7 @@
 			height: max-content;
 			transition: all .3s ease-in-out;
 			&:hover {
-					background: #D92800;
+					background: #B30834;
 				}
 			@media (max-width: 768px) {
 				color: var(--main-link-color);
@@ -29,8 +29,8 @@
 		}
 	}
 	.partnersSliderBtns {
-		top: 70%;
-		width: calc(100% + 110px);
+		top: 65%;
+		width: calc(100% + 118px);
 		@media (max-width: 768px) {
 			display: none;
 		}
@@ -44,8 +44,9 @@
 			}
 		}
 		.partnerCard {
+			max-width: 180px;
 			box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.12);
-			height: 100%;
+			height: 120px;
 			border-radius: 4px;
 			display: flex;
 			align-items: center;
@@ -53,6 +54,7 @@
 			background: transparent;
 			@media (max-width: 768px) {
 				box-shadow: 0 0 0;
+				margin: 0 auto;
 			}
 			.partnersLink {
 				height: 100%;
