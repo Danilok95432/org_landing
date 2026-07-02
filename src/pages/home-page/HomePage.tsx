@@ -12,7 +12,6 @@ import { MainImgSection } from 'src/shared/sections-new/MainImgSection/main-img-
 
 export const HomePage = () => {
 	const { data } = useGetSettingsSiteQuery(null)
-	console.log(data?.isShowOrg)
 	return (
 		<>
 			{data?.isShowPromo && <MainImgSection />}

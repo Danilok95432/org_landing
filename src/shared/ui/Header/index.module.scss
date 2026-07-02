@@ -16,6 +16,14 @@
 			align-items: center;
 			flex-direction: column;
 		}
+		.link {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			svg {
+				max-height: 110px;
+			}
+		}
 		.infoBlock {
 			max-width: max-content;
 			@media (max-width: 450px) {

@@ -1,5 +1,5 @@
 import { Container } from 'src/shared/ui/Container/Container'
-import { navigationElements } from './consts'
+import { getNavigationElements } from './consts'
 import styles from './index.module.scss'
 import { BurgerMenu } from './components/burger-menu/burger-menu'
 import { useEffect, useRef } from 'react'
@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
 
 import cn from 'classnames'
+import { useGetSettingsSiteQuery } from 'src/features/home/api/home.api'
 
 export const MainNavigation = () => {
 	const location = useLocation()
@@ -17,6 +18,9 @@ export const MainNavigation = () => {
 	const rafRef = useRef<number | null>(null)
 	const timeoutRef = useRef<number | null>(null)
 	const activeTargetRef = useRef<string | null>(null)
+	const { data: settingsData } = useGetSettingsSiteQuery(null)
+
+	const navigationElements = getNavigationElements(settingsData)
 
 	const cancelPending = () => {
 		if (rafRef.current !== null) {

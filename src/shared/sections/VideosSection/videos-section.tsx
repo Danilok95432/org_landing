@@ -76,7 +76,8 @@ export const VideosSection: FC<VideoProps> = ({ id }) => {
 					<SliderBtns
 						className={styles.videoSliderBtns}
 						swiperRef={swiperRef}
-						color={'#fff'}
+						color='#000'
+						disabledColor='#fff'
 						nextBtnColor={nextBtnColor}
 						prevBtnColor={prevBtnColor}
 					/>

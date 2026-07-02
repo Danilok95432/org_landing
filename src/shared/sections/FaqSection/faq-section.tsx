@@ -14,7 +14,7 @@ type FaqProps = {
 export const FaqSection: FC<FaqProps> = ({ id }) => {
 	const { data: faqEvent } = useGetAllFaqByIdQuery(id, { skip: !id })
 	return (
-		<Section className={cn(styles.faq)}>
+		<Section className={cn(styles.faq)} id='faq'>
 			<Container>
 				<h2>Часто задаваемые вопросы</h2>
 				<div className={styles.homeFaqList}>

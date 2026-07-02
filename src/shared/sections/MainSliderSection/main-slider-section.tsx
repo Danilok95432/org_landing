@@ -45,7 +45,8 @@ export const MainSliderSection = () => {
 				<SliderBtns
 					className={styles.eventsSliderBtns}
 					swiperRef={swiperRef}
-					color={'#fff'}
+					color='#000'
+					disabledColor='#fff'
 					nextBtnColor='#0000000D'
 					prevBtnColor='#0000000D'
 				/>

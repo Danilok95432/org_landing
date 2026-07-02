@@ -28,7 +28,7 @@ export const EventsSection: FC = () => {
 	}, [])
 
 	return (
-		<Section className={cn(styles.eventsSection)}>
+		<Section className={cn(styles.eventsSection)} id='event'>
 			<Container off={isMobile}>
 				<FlexRow className={styles.eventsSectionRow}>
 					<h2 className={styles.sectionTitle}>События</h2>
@@ -49,7 +49,8 @@ export const EventsSection: FC = () => {
 				<SliderBtns
 					className={styles.eventsSliderBtns}
 					swiperRef={swiperRef}
-					color={'#fff'}
+					color='#000'
+					disabledColor='#fff'
 					nextBtnColor='#0000000D'
 					prevBtnColor='#0000000D'
 				/>

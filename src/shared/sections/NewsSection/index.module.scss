@@ -42,6 +42,14 @@
 	.newsWrapper {
 		max-width: 1230px;
 		margin: 0 auto;
+		position: relative;
+		.newsSliderBtns {
+			top: 48%;
+			width: calc(100% + 118px);
+			@media (max-width: 768px) {
+				display: none;
+			}
+		}
 	}
 	.newsSlider {
 		position: relative;
@@ -49,13 +57,6 @@
 	}
 	.newsCont {
 		position: relative;
-		.newsSliderBtns {
-			top: 77%;
-			width: calc(100% + 118px);
-			@media (max-width: 768px) {
-				display: none;
-			}
-		}
 		.btnRow {
 			justify-content: space-between;
 			align-items: center;
@@ -78,7 +79,7 @@
 				height: max-content;
 				transition: all 0.3s ease-in-out;
 				&:hover {
-					background: #B30834;
+					background: #b30834;
 				}
 				@media (max-width: 768px) {
 					color: var(--main-link-color);

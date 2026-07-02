@@ -27,4 +27,7 @@ export type SiteSettings = {
 	id_event: string
 	id_promo_block: string
 	domain: string
+	aboutTitle: string
+	textBtnReg: string
+	textBtnPart: string
 }

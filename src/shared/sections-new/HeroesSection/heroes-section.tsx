@@ -105,7 +105,8 @@ export const HeroesSection: FC<NewsProps> = ({ id }) => {
 				<SliderBtns
 					className={styles.newsSliderBtns}
 					swiperRef={swiperRef}
-					color={'#fff'}
+					color='#000'
+					disabledColor='#fff'
 					nextBtnColor={nextBtnColor}
 					prevBtnColor={prevBtnColor}
 				/>

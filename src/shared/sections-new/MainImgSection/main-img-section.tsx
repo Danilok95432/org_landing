@@ -10,10 +10,12 @@ import { Pagination, Autoplay } from 'swiper'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Link } from 'react-router-dom'
+import { Container } from 'src/shared/ui/Container/Container'
 
 export const MainImgSection = () => {
 	const { data } = useGetSettingsSiteQuery(null)
 	const { data: eventData } = useGetEventByIdQuery(data?.id_event ?? '1')
+	const { data: settingsData } = useGetSettingsSiteQuery(null)
 
 	const isSlider = data?.id_promo_block === '2'
 
@@ -39,14 +41,12 @@ export const MainImgSection = () => {
 					<FlexRow className={styles.controls}>
 						<FlexRow className={styles.topGroup}>
 							{data?.isShowBtnRequest && (
-								<MainButton className={styles.controlBtn}>
-									Подать заявку (для участников)
-								</MainButton>
+								<MainButton className={styles.controlBtn}>{settingsData?.textBtnPart}</MainButton>
 							)}
 							{data?.isShowBtnBel && (
 								<MainButton className={styles.controlBtnSpecial}>
 									<div className={styles.customSvgWrapper}></div>
-									<p>Регистрация и билеты</p>
+									<p>{settingsData?.textBtnReg}</p>
 								</MainButton>
 							)}
 						</FlexRow>
@@ -59,43 +59,47 @@ export const MainImgSection = () => {
 	if (isSlider) {
 		return (
 			<Section className={styles.noPadding}>
-				<Swiper
-					className={styles.mainSlider}
-					modules={[Pagination, Autoplay]}
-					slidesPerView={1}
-					loop
-					pagination={{
-						clickable: true,
-					}}
-					autoplay={{
-						delay: 6000,
-						disableOnInteraction: false,
-						pauseOnMouseEnter: true,
-					}}
-				>
-					{data?.slider_photo.map((slide) => (
-						<SwiperSlide key={slide.id}>
-							<div className={styles.slide}>
-								<img className={styles.mainImg} src={slide.original} alt='' />
-								{renderContent(false)}
-							</div>
-						</SwiperSlide>
-					))}
-				</Swiper>
+				<Container>
+					<Swiper
+						className={styles.mainSlider}
+						modules={[Pagination, Autoplay]}
+						slidesPerView={1}
+						loop
+						pagination={{
+							clickable: true,
+						}}
+						autoplay={{
+							delay: 6000,
+							disableOnInteraction: false,
+							pauseOnMouseEnter: true,
+						}}
+					>
+						{data?.slider_photo.map((slide) => (
+							<SwiperSlide key={slide.id} className={styles.slideRow}>
+								<div className={styles.slide}>
+									<img className={styles.mainImg} src={slide.original} alt='' />
+									{renderContent(false)}
+								</div>
+							</SwiperSlide>
+						))}
+					</Swiper>
+				</Container>
 			</Section>
 		)
 	}
 
 	return (
 		<Section className={styles.noPadding}>
-			<img
-				className={styles.mainImg}
-				src={
-					data?.promo_photo && data?.promo_photo.length > 0 ? data?.promo_photo[0].original : main
-				}
-				alt=''
-			/>
-			{renderContent(true)}
+			<Container>
+				<img
+					className={styles.mainImg}
+					src={
+						data?.promo_photo && data?.promo_photo.length > 0 ? data?.promo_photo[0].original : main
+					}
+					alt=''
+				/>
+				{renderContent(true)}
+			</Container>
 		</Section>
 	)
 }

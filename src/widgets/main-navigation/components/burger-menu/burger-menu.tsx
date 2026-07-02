@@ -4,9 +4,10 @@ import cn from 'classnames'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import styles from './index.module.scss'
-import { navigationElements } from '../../consts'
+import { getNavigationElements } from '../../consts'
 import { PersonIconSvg } from 'src/shared/ui/icons/personIconSVG'
 import { MainButton } from 'src/shared/ui/MainButton/MainButton'
+import { useGetSettingsSiteQuery } from 'src/features/home/api/home.api'
 
 export const BurgerMenu = () => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -23,6 +24,10 @@ export const BurgerMenu = () => {
 	const rafRef = useRef<number | null>(null)
 	const timeoutRef = useRef<number | null>(null)
 	const activeTargetRef = useRef<string | null>(null)
+
+	const { data: settingsData } = useGetSettingsSiteQuery(null)
+
+	const navigationElements = getNavigationElements(settingsData)
 
 	const cancelPending = () => {
 		if (rafRef.current !== null) {

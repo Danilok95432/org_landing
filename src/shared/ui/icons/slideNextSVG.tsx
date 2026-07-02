@@ -16,7 +16,7 @@ export const SlideNextSvg: FC<SlideNextSvgProps> = ({ color = '#000', className 
 		>
 			<path
 				d='M10.8516 13.0625L16.8516 7.0625L10.8516 1.0625M0.75 7.0625H15.75'
-				stroke='black'
+				stroke={color}
 				strokeWidth='1.5'
 				strokeLinecap='square'
 			/>

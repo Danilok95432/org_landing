@@ -88,7 +88,8 @@ export const OrgsSection = () => {
 					<SliderBtns
 						className={styles.partnersSliderBtns}
 						swiperRef={swiperRef}
-						color='#fff'
+						color='#000'
+						disabledColor='#fff'
 						nextBtnColor={nextBtnColor}
 						prevBtnColor={prevBtnColor}
 					/>
