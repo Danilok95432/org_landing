@@ -59,11 +59,11 @@ export const EventCard: FC<EventItemProps> = ({
 					<h3 className={styles.eventTitle}>{title}</h3>
 					<EventStatus className={styles.status} statusCode={status} />
 					<p className={styles.eventDate}>
-						{date ? `${mainFormatDate(date)}, ${getDayOfWeek(date)}` : 'Нет даты'}
+						{date ? `${mainFormatDate(date, 'dd MMM yyyy')}, ${getDayOfWeek(date)}` : 'Нет даты'}
 					</p>
 					{endDate && date !== endDate && (
 						<p className={styles.eventDate}>
-							{`${mainFormatDate(endDate)}, ${getDayOfWeek(endDate)}`}
+							{`${mainFormatDate(endDate, 'dd MMM yyyy')}, ${getDayOfWeek(endDate)}`}
 						</p>
 					)}
 					<p className={styles.eventLocations}>

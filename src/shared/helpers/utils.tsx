@@ -395,11 +395,12 @@ export function formatDate(dateInput: string | Date): string {
 // функция форматирования даты с локализацией
 export const mainFormatDate = (
 	date: Date | string | undefined,
-	dateFormat = 'dd MMMM yyyy',
+	dateFormat = 'dd MMM yyyy',
 ): string | null => {
 	if (!date) return null
 	const formatedDate = typeof date === 'string' ? new Date(date) : date
-	return format(formatedDate, dateFormat, { locale: ru })
+	const formatted = format(formatedDate, dateFormat, { locale: ru })
+	return formatted.replace('.', '') // убираем точку после месяца
 }
 
 export const parseTimeFromDate = (date: Date | string | undefined): string | null => {

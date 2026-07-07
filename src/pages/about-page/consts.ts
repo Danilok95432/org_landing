@@ -2,19 +2,19 @@ import { type NavigationItem } from 'src/types/navigation'
 
 export const AboutMenuItems: NavigationItem[] = [
 	{
-		title: 'Как проехать',
+		title: 'Достижения',
 		link: 'route',
 	},
 	{
-		title: 'Размещение',
+		title: 'История',
 		link: 'placement',
 	},
 	{
-		title: 'Документы',
+		title: 'Русская стенка',
 		link: 'docs',
 	},
 	{
-		title: 'Билеты',
+		title: 'Вызов этноспорта',
 		link: 'tickets',
 	},
 ]

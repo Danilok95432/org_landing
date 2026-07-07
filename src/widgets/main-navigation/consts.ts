@@ -15,7 +15,7 @@ export const getNavigationElements = (settingsData?: SettingsData): NavigationEl
 	[
 		{
 			title: `${settingsData?.aboutTitle}`,
-			link: 'about',
+			link: '/about',
 		},
 		settingsData?.isShowEvents
 			? {
