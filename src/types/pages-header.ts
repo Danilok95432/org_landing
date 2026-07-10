@@ -19,4 +19,13 @@ export type PagesHeader = {
 	mainphoto: ImageItemWithText[]
 	photoGallery: ImageItemWithText[]
 	documents: DocType[]
+	info: string
+	rewards: string
+	history: string
+	p_text1: string
+	p_text2: string
+	p_text3: string
+	p_title1: string
+	p_title2: string
+	p_title3: string
 }

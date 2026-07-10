@@ -26,16 +26,16 @@ export const AboutHistory: FC = () => {
 	return (
 		<div className={styles.aboutGeneralPage}>
 			<Helmet>
-				<title>О событии</title>
+				<title>Об атманках</title>
 			</Helmet>
 
 			<div className={styles.inner}>
 				<h2>Информация</h2>
 				<GalleryImg variant='slider' allPageImages={allPagePhoto} className={styles.gallery} />
-				{aboutPageData?.page.full2 && (
+				{aboutPageData?.page.info && (
 					<div
 						className={styles.mainDescs}
-						dangerouslySetInnerHTML={{ __html: aboutPageData.page.full2 }}
+						dangerouslySetInnerHTML={{ __html: aboutPageData.page.info }}
 					/>
 				)}
 				{/* <div className={styles.infoWrapper}>

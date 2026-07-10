@@ -91,14 +91,35 @@ export const MainImgSection = () => {
 	return (
 		<Section className={styles.noPadding}>
 			<Container>
-				<img
-					className={styles.mainImg}
-					src={
-						data?.promo_photo && data?.promo_photo.length > 0 ? data?.promo_photo[0].original : main
-					}
-					alt=''
-				/>
-				{renderContent(true)}
+				{data?.isClicked ? (
+					<a href={`https://${data?.domain}`} target='_blank' rel='noreferrer'>
+						<div className={styles.mainBanner}>
+							<img
+								className={styles.mainImg}
+								src={
+									data?.promo_photo && data?.promo_photo.length > 0
+										? data?.promo_photo[0].original
+										: main
+								}
+								alt=''
+							/>
+							{renderContent(true)}
+						</div>
+					</a>
+				) : (
+					<div className={styles.mainBanner}>
+						<img
+							className={styles.mainImg}
+							src={
+								data?.promo_photo && data?.promo_photo.length > 0
+									? data?.promo_photo[0].original
+									: main
+							}
+							alt=''
+						/>
+						{renderContent(true)}
+					</div>
+				)}
 			</Container>
 		</Section>
 	)

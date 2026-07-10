@@ -15,6 +15,7 @@ import { PartnersPage } from 'src/pages/partners-page/partners-page'
 import { VideoDetails } from 'src/pages/videos-page/video-details/video-details'
 import { VideosPage } from 'src/pages/videos-page/videos-page'
 import { AppRoute } from './consts'
+import { AboutAdditionalRazdel } from 'src/pages/about-page/layout/additional-razdel/additional-razdel'
 
 export const MainRoutes = () => {
 	return (
@@ -34,10 +35,11 @@ export const MainRoutes = () => {
 				<Route path={'/events-list'} element={<EventsPage />} />
 				<Route path={AppRoute.About} element={<AboutLayout />}>
 					<Route index element={<AboutHistory />} />
-					<Route path={AppRoute.AboutDocs} element={<AboutDocs />} />
-					<Route path={AppRoute.AboutRoute} element={<AboutRoute />} />
-					<Route path={AppRoute.AboutPlacement} element={<AboutPlacement />} />
-					<Route path={AppRoute.AboutTickets} element={<AboutTickets />} />
+					<Route path={'/about/p1'} element={<AboutAdditionalRazdel />} />
+					<Route path={'/about/p2'} element={<AboutDocs />} />
+					<Route path={'/about/rewards'} element={<AboutRoute />} />
+					<Route path={'/about/history'} element={<AboutPlacement />} />
+					<Route path={'/about/p3'} element={<AboutTickets />} />
 				</Route>
 			</Route>
 		</Routes>
