@@ -4,6 +4,26 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/x-icon" href="src/assets/img/favicon.png" />
+		<script>
+			;(async function () {
+				try {
+					// 1. Получаем ID события
+					const data = await fetch('https://t6simpleapi.npotau.ru/settings/getinfo')
+					const resData = await data.json()
+
+					if (resData.status === 'error') {
+						return
+					}
+					if (resData && resData.title) {
+						document.title = resData.title
+					} else {
+						console.warn('Заголовок не найден в ответе сервера')
+					}
+				} catch (error) {
+					console.error('Ошибка при выполнении запроса:', error)
+				}
+			})()
+		</script>
 		<title>Организатор</title>
 	</head>
 	<body>

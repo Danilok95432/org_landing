@@ -36,7 +36,11 @@ export const HistorySection: FC<{ noTitle?: boolean; className?: string }> = ({
 								<SwiperSlide key={el.id}>
 									<div className={styles.historyEl}>
 										<FlexRow className={styles.titleRow}>
-											<HistorySeporatorSVG />
+											{el.dates_marker && el.dates_marker.length > 0 ? (
+												<img className={styles.marker} src={el.dates_marker[0].original} />
+											) : (
+												<HistorySeporatorSVG />
+											)}
 											<p>{el.datename}</p>
 										</FlexRow>
 										<p>{el.datetext}</p>

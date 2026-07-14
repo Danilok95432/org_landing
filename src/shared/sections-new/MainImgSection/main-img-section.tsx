@@ -78,7 +78,6 @@ export const MainImgSection = () => {
 							<SwiperSlide key={slide.id} className={styles.slideRow}>
 								<div className={styles.slide}>
 									<img className={styles.mainImg} src={slide.original} alt='' />
-									{renderContent(false)}
 								</div>
 							</SwiperSlide>
 						))}

@@ -99,7 +99,16 @@ export const NewsDetailsNew = () => {
 											<div dangerouslySetInnerHTML={{ __html: newsItemData.short }} />
 										)}
 									</div>
-									<img src={newsItemData?.mainphoto[0].original} alt='' />
+									{newsItemData?.mainphoto && newsItemData?.mainphoto.length > 0 && (
+										<img
+											src={
+												newsItemData?.mainphoto && newsItemData?.mainphoto.length > 0
+													? newsItemData?.mainphoto[0].original
+													: ''
+											}
+											alt=''
+										/>
+									)}
 									<div className={styles.newsItemInfoContent}>
 										<div className={styles.contentInfo}>
 											<div className={styles.newsDescs}>

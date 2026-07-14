@@ -46,6 +46,10 @@
 			.titleRow {
 				gap: 4px;
 				align-items: center;
+				.marker {
+					width: 32px;
+					height: 32px;
+				}
 				p {
 					font-size: 44px;
 					font-weight: 400;

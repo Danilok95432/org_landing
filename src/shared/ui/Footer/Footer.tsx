@@ -2,18 +2,17 @@ import { Container } from '../Container/Container'
 import { FlexRow } from '../FlexRow/FlexRow'
 import styles from './index.module.scss'
 import { VkSocialSvg } from '../icons/vkSocialSVG'
-import { useGetContactsQuery, useGetSettingsSiteQuery } from 'src/features/home/api/home.api'
+import { useGetSettingsSiteQuery } from 'src/features/home/api/home.api'
 import { MaxSocialSvg } from '../icons/maxSocialSVG'
 
 export const Footer = () => {
 	const { data } = useGetSettingsSiteQuery(null)
-	const { data: contactsData } = useGetContactsQuery('')
 	return (
 		<footer className={styles.footer}>
 			<Container>
 				<FlexRow className={styles.footerCont}>
 					<FlexRow className={styles.topRow}>
-						<p>{contactsData?.fullName}</p>
+						<p>{data?.fullname}</p>
 						<FlexRow className={styles.socialsRow}>
 							<a href={data?.vk ?? ''}>
 								<FlexRow className={styles.socialEl}>

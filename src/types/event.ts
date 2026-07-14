@@ -34,6 +34,7 @@ export type EventAward = {
 	id: string
 	datename: string
 	datetext: string
+	dates_marker: ImageItemWithText[]
 }
 
 export type EventAwardResponse = {
