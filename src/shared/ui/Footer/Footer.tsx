@@ -56,13 +56,19 @@ export const Footer = () => {
 							<p>Документы</p>
 							<FlexRow className={styles.infoRow}>
 								<FlexRow className={styles.infoEl}>
-									<p>{'Политика конфиденциальности'}</p>
+									<a href='https://t6simpleapi.npotau.ru/uploads/maindocs/politics.pdf' download>
+										{'Политика конфиденциальности'}
+									</a>
 								</FlexRow>
 								<FlexRow className={styles.infoEl}>
-									<p>{'Согласие на обработку персональных данных'}</p>
+									<a href='https://t6simpleapi.npotau.ru/uploads/maindocs/personal.pdf' download>
+										{'Согласие на обработку персональных данных'}
+									</a>
 								</FlexRow>
 								<FlexRow className={styles.infoEl}>
-									<p>{'Пользовательское соглашение'}</p>
+									<a href='https://t6simpleapi.npotau.ru/uploads/maindocs/user.pdf' download>
+										{'Пользовательское соглашение'}
+									</a>
 								</FlexRow>
 							</FlexRow>
 						</FlexRow>

@@ -18,6 +18,7 @@ export const MainSliderSection = () => {
 		? [...eventData.promo].sort((a, b) => Number(a.id) - Number(b.id))
 		: []
 
+	if (!eventData || !eventData?.promo || !(eventData?.promo.length > 0)) return null
 	return (
 		<Section className={cn(styles.mainSlider)}>
 			<Container className={styles.sliderCont}>
