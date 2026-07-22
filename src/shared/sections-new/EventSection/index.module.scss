@@ -3,6 +3,7 @@
 	.sliderWrapper {
 		max-width: 1230px;
 		margin: 0 auto;
+		position: relative;
 	}
 	.slider {
 		padding: 5px;
@@ -58,7 +59,7 @@
 	.eventsSliderBtns {
 		width: calc(100% + 118px);
 		top: 55%;
-		@media (max-width: 768px) {
+		@media (max-width: 1350px) {
 			display: none;
 		}
 	}

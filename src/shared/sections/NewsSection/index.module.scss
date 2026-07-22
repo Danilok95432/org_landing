@@ -9,6 +9,9 @@
 
 .breakpointNews {
 	padding: 5px 5px 20px 5px;
+	@media (max-width: 1010px) {
+		display: none;	
+	}
 }
 
 .mainNews {
@@ -39,14 +42,20 @@
 
 .news {
 	padding: 27px 0 11px;
+	.newsSlide {
+		max-width: max-content;
+	}
 	.newsWrapper {
 		max-width: 1230px;
 		margin: 0 auto;
 		position: relative;
+		@media (max-width: 450px) {
+			padding-left: 24px;
+		}
 		.newsSliderBtns {
 			top: 48%;
 			width: calc(100% + 118px);
-			@media (max-width: 768px) {
+			@media (max-width: 1350px) {
 				display: none;
 			}
 		}

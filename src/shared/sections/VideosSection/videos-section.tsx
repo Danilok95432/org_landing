@@ -68,7 +68,7 @@ export const VideosSection: FC<VideoProps> = ({ id }) => {
 						onInit={(swiper) => setActiveIndex(swiper.activeIndex)}
 					>
 						{videos?.map((slideItem, idx) => (
-							<SwiperSlide key={idx}>
+							<SwiperSlide key={idx} className={styles.videoSlide}>
 								<VideoCard key={slideItem.id} {...slideItem} />
 							</SwiperSlide>
 						))}

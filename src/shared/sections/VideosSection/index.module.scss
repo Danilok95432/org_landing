@@ -5,6 +5,9 @@
 		justify-content: space-between;
 		gap: 17px;
 	}
+	.videoSlide {
+		max-width: max-content;
+	}
 	.btnRow {
 		justify-content: space-between;
 		align-items: center;
@@ -57,7 +60,7 @@
 	.videoSliderBtns {
 		top: 50%;
 		width: calc(100% + 118px);
-		@media (max-width: 768px) {
+		@media (max-width: 1350px) {
 			display: none;
 		}
 	}
