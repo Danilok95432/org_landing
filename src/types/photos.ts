@@ -13,4 +13,5 @@ export type ImageItemWithText = {
 	thumbnail: string
 	title: string
 	id: string
+	desc?: string
 }

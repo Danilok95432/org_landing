@@ -45,11 +45,11 @@ export const homeApi = createApi({
 				url: `events/${eventId}`,
 			}),
 		}),
-		getEventNewsById: build.query<CardNewsItem[], string>({
-			query: (eventId) => ({
+		getEventNewsById: build.query<CardNewsItem[], { id?: string }>({
+			query: ({ id }) => ({
 				url: `news`,
 				params: {
-					id_event: eventId,
+					id_event: id,
 				},
 			}),
 		}),

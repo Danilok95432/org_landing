@@ -32,6 +32,7 @@ export type SiteSettings = {
 	textBtnPart: string
 	isClicked: boolean
 	org_photo: ImageItemWithText[]
+	promoband: ImageItemWithText[]
 	fullname: string
 	shortname: string
 }

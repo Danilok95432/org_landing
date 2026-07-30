@@ -42,7 +42,7 @@ export const NewsDetailsNew = () => {
 		error: newsItemError,
 		isError: isNewsItemError,
 	} = useGetNewsByIdQuery(id ?? '')
-	const { data: newsList = [] } = useGetEventNewsByIdQuery('1')
+	const { data: newsList = [] } = useGetEventNewsByIdQuery({ id: '' })
 	const [previewCount, setPreviewCount] = useState<number>(1)
 	const contentRef = useRef<HTMLDivElement>(null)
 	const navigate = useNavigate()

@@ -21,7 +21,7 @@ type NewsProps = {
 }
 
 export const NewsSection: FC<NewsProps> = ({ id }) => {
-	const { data: newsList } = useGetEventNewsByIdQuery(id, { skip: !id })
+	const { data: newsList } = useGetEventNewsByIdQuery({ id: '' })
 	const [isMobile, setIsMobile] = useState(false)
 	const navigate = useNavigate()
 	const breakpoint = useBreakPoint()

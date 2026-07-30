@@ -8,17 +8,17 @@ import { type RefObject, useRef } from 'react'
 import { eventsSliderOptions } from './consts'
 import { FlexRow } from 'src/shared/ui/FlexRow/FlexRow'
 import skeletonImg from 'src/assets/img/skeleton-img.png'
-import { useGetEventByIdQuery } from 'src/features/home/api/home.api'
+import { useGetSettingsSiteQuery } from 'src/features/home/api/home.api'
 
 export const MainSliderSection = () => {
 	const swiperRef: RefObject<SwiperRef> = useRef<SwiperRef>(null)
-	const { data: eventData } = useGetEventByIdQuery('1')
+	const { data: settingsData } = useGetSettingsSiteQuery(null)
 
-	const sortedPromo = eventData?.promo
-		? [...eventData.promo].sort((a, b) => Number(a.id) - Number(b.id))
+	const sortedPromo = settingsData?.promoband
+		? [...settingsData.promoband].sort((a, b) => Number(a.id) - Number(b.id))
 		: []
 
-	if (!eventData || !eventData?.promo || !(eventData?.promo.length > 0)) return null
+	if (!settingsData?.promoband || !(settingsData?.promoband.length > 0)) return null
 	return (
 		<Section className={cn(styles.mainSlider)}>
 			<Container className={styles.sliderCont}>

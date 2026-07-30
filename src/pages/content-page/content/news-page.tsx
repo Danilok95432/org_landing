@@ -16,7 +16,7 @@ import { VideoCard } from 'src/shared/sections/VideosSection/components/video-ca
 import { Pagination } from 'src/widgets/pagination/pagination'
 
 export const NewsPage = () => {
-	const { data: newsList = [] } = useGetEventNewsByIdQuery('1')
+	const { data: newsList = [] } = useGetEventNewsByIdQuery({ id: '' })
 	const breakpoint = useBreakPoint()
 	const [searchParams] = useSearchParams()
 
