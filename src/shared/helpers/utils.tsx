@@ -335,7 +335,7 @@ export const defineFileFormat = (fileName: string) => {
 	return formatFileArr[formatFileArr.length - 1]
 }
 
-export function formatDate(dateInput: string | Date): string {
+export function formatDate(dateInput: string | Date, time?: boolean): string {
 	let year: number
 	let month: number // 1–12
 	let day: number
@@ -388,8 +388,8 @@ export function formatDate(dateInput: string | Date): string {
 	// Форматирование времени с ведущими нулями
 	const formattedHours = String(hours).padStart(2, '0')
 	const formattedMinutes = String(minutes).padStart(2, '0')
-
-	return `${day} ${monthName} ${year}, ${formattedHours}:${formattedMinutes}`
+	if (time) return `${day} ${monthName} ${year}, ${formattedHours}:${formattedMinutes}`
+	else return `${day} ${monthName} ${year}`
 }
 
 // функция форматирования даты с локализацией
