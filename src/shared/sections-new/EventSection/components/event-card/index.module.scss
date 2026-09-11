@@ -3,7 +3,7 @@
 	box-shadow: 0 0 5px 0 rgba(1, 61, 86, 0.15);
 	background: var(--color-white);
 	transition: all 0.3s;
-	width: fluid(287, 287);
+	width: fluid(288, 288);
 	max-height: 439px;
 	transition: all 0.3s ease-in-out;
 
@@ -56,7 +56,7 @@
 		.event-item-img {
 			position: relative;
 			width: 100%;
-			height: 191px;
+			height: 144px;
 			overflow: hidden;
 			@media (max-width: 768px) {
 				height: 200px;

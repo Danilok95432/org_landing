@@ -43,14 +43,14 @@
 		.asideNewsCard {
 			display: flex;
 			flex-direction: column;
-			width: 245px;
+			width: 246px;
 			gap: 5px;
 			img {
 				width: 100%;
 				aspect-ratio: 3 / 2;
 				object-fit: cover;
-				border-radius: 0px;
-				height: 138px;
+				border-radius: 4px;
+				height: 164px;
 			}
 			.asideNewsCardTitle {
 				font-size: 16px;
